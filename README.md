@@ -96,6 +96,7 @@ Peer Review: Joshua Thompson, Milesh Shah
 ![alt text](photofiltering.jpg)
 
 Use Case Description
+
 Use Case 3: Filtering Images
 Description: 
 - The user, photo editor filters the images, that is the user selects which images will be downloaded based on their rating
@@ -154,3 +155,8 @@ Use Cases :
 
 1. User can download images over a specified rating received for an images
 2. User specifies the rating that an image must receive so that it may be downloaded
+
+- Filtering Images:
+
+1. User puts image's rating as metadata
+2. User chooses images based on their rating
