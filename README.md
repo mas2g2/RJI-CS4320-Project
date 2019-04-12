@@ -92,7 +92,9 @@ Steps of Execution
 Content: Christopher Foeller
 
 Peer Review: Joshua Thompson, Milesh Shah
+
 ![alt text](photofiltering.jpg)
+
 Use Case Description
 Use Case 3: Filtering Images
 Description: 
