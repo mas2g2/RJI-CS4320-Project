@@ -98,30 +98,45 @@ Peer Review: Joshua Thompson, Milesh Shah
 Use Case Description
 
 Use Case 3: Filtering Images
+
 Description: 
+
 - The user, photo editor filters the images, that is the user selects which images will be downloaded based on their rating
+
 Triggers:
+
 - Choosing category of Image
 - Submitting image for rating
 - Using rating as metadata for image
 - Select image based on rating
+
 Actors
+
 - Photo Editors
+
 Preconditions
+
 - Photo editor has an account in the system
 - Photo editor has images for submission
 - Photo editor has submitted images for rating
 - Images have been rated
+
 Main Success Scenario 
+
 - Photo Editor goes to home page
 - Photo editor chooses category of image to submit
 - Photo editor submits image
 - Images are submitted and rated
 - Photo editor selects images based on rating 
+
 Failed End Condition
+
 - No images match the raating the user requests
+
 Steps of Execution
+
 - The Photo Editor connects to the home page. There the user decides to submit and image for rating. The user first selects the category of image for rating. Then the user selects the images that will be submitted and submits the images. Then the submitted images are rated and the rating is put as the image’s metadata and then the user selects the images based on their rating.
+
 
 
 Purpose\Goal: Create a classifier that can determine which photos are of good quality and which photos are not of good quality on a sliding scale
