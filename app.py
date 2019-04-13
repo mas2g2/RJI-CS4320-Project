@@ -120,10 +120,17 @@ def rating_photos():
         if request.method == "POST":
             
             filedata = form['upload']
-            # TODO give photos to ranking system
-            # TODO upload photos to db
+            
+            # TODO move files to temp storage on server
+            # TODO upload photo records to db
+            # TODO pass photos to ranking system
+            # TODO update photo records to db with ranking system's output json
+            # TODO pass photo data in json array format to html template
             # TODO rediretct to photo display gallery
-            # Pass photo data in json form to html page
+            
+            
+            
+            
         return redirect('/photoGallery/')
 
     except Exception as e:
