@@ -125,3 +125,12 @@ function selectTab(evt, action) {
 function showLoader() {
     $("#loader").addClass("loader");
 }
+
+// USE CASE 4
+// will detect which fashion to filter/sort
+// ex.) descending/ascending rating, rating zone, etc.
+// input: filter options
+// output: updates displayed photo order
+function filter(){
+    
+}
