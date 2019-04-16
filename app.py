@@ -111,7 +111,15 @@ def login_page():
 
         return response
 		
+# USE CASE 1
+# input: folder of images or single image file
+# output: new record created in database and file saved to server
+# The user needs to submit an image into the system from the system homepage, since we are implementing our project as a web application we would need to use a form HTML element which will collect the image. This file is then submitted to the ‘/rating/’ route via POST method. The python flask backend verifies it has received a post request and reads the files submitted to the form, if any exist. The submitted photos are appended with a random integer at the end to avoid files with the same name and the photos are moved to specified storage on the server. Photo records are then saved to the database that take the filename and filepath inputs.
 
+# USE CASE 2
+# input: image or image folder
+# output: json array with technical and aesthetic rating of each picture
+# These .jpg photos are then submitted to the neural network image assessment system. The rating system outputs a json array that contains the technical and aesthetic rating of each photo. These ratings are then added to the Photo records in the database and a JSON array that contains the file path, filename, and ratings of each file is passed to the ‘/photoGallery/’ template. For this task, the system will require: HTML, Python, MySQL, an image, a web server.
 @app.route('/rating/', methods=["GET","POST"])
 def rating_photos():
 
@@ -130,13 +138,19 @@ def rating_photos():
             
             
             
-            
+        # USE CASE 3
+        # USE CASE 4
         return redirect('/photoGallery/')
 
     except Exception as e:
 
         return redirect('/')
 
+# USE CASE 3
+# images will have the option to click a link button that will have the attribute 'download' that will download a given picture upon mousedown
+# input: mousedown
+# output: download to client's machine
+# The photo gallery template will dynamically load the images that are passed to it from the json object created on the backend after receiving the photo ratings. In the case of a large number of files being submitted, batches of files are loaded to the page via AJAX. The photos are displayed in a grid fashion. From here, the user will be be able to download images. A user can click an image to view more details about it or click each photo’s download button to download individually. The user also has the option to select all the photos to download via a checkbox. For this task the system will require: JavaScript, HTML, Python, an image, and a web server
 @app.route('/photoGallery/')
 def photo_gallery():
     user_id = request.cookies.get('loggedInUser')
@@ -144,7 +158,6 @@ def photo_gallery():
         return render_template("photoGallery.html")
     else:
         return redirect("/login/") 
-    
 
 
 @app.route('/logout/')
@@ -154,10 +167,16 @@ def logout():
     return response
 
 
+# USE CASE 4
+# will detect which fashion to filter/sort
+# ex.) descending/ascending rating, rating zone, etc.
+# input: filter options
+# output: updates displayed photo order
+# The user will be able to filter the images based on their ratings. The user can sort by aesthetic and technical ratings in descending and ascending order. Additionally, the user can filter the displayed results by selecting an image rating range 1-10 on both measures. For this task the system will require HTML and JavaScript.
 with app.test_request_context():
     url_for('static', filename='styles/mystyle.css')
     url_for('static', filename='styles/stylesheet.css')
-    url_for('static', filename='scripts/myScript.js')
+    url_for('static', filename='scripts/myScript.js')   # USE CASE 4
     url_for('static', filename='styles/bootstrap.min.css')
 
 
