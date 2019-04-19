@@ -67,6 +67,27 @@ $(document).ready(function(){
         }
     });
     
+    if($('#myCheckbox1').attr('checked')){
+        $('#imagesUpload').show();
+        $('#directoryUpload').hide();
+    }
+    else {
+        $('#imagesUpload').hide();
+        $('#directoryUpload').show();
+    }
+    
+    $("#myCheckbox1").change(function() {
+        if(this.checked) {
+            $('#imagesUpload').show();
+            $('#directoryUpload').hide();
+        }
+        else {
+            $('#imagesUpload').hide();
+            $('#directoryUpload').show();
+        }
+    });
+
+    
 });
 
 function nextSlide(){

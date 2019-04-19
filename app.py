@@ -1,5 +1,6 @@
 from flask import Flask, url_for, render_template, request, redirect
 import mysql.connector
+from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
 # TODO set up read_db_config
@@ -9,8 +10,11 @@ mydb = mysql.connector.connect(
   passwd="password123",
   database="rjiDB"
 )
-
 mycursor = mydb.cursor()
+
+UPLOAD_FOLDER = '/tmp/images/'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER 
+ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
 @app.route('/')
 def home():
@@ -53,7 +57,8 @@ def login_page():
                 else:
                     
                     response = redirect("http://3.17.206.109")
-                    response.set_cookie('loggedInUser', userCredentialsQueryResult[1])
+                    print(userCredentialsQueryResult)
+                    response.set_cookie('loggedInUser', str(userCredentialsQueryResult[0]))
                     
                     return response
                     
@@ -93,7 +98,8 @@ def login_page():
                     mycursor.execute(sql, val)
                     mydb.commit()
                     
-                except Error as e:
+                except Exception as e:
+                    print(e);
                     error = 'Failed to create account'
                     return render_template('login.html', error = error)
                 
@@ -116,6 +122,11 @@ def login_page():
 # output: new record created in database and file saved to server
 # The user needs to submit an image into the system from the system homepage, since we are implementing our project as a web application we would need to use a form HTML element which will collect the image. This file is then submitted to the ‘/rating/’ route via POST method. The python flask backend verifies it has received a post request and reads the files submitted to the form, if any exist. The submitted photos are appended with a random integer at the end to avoid files with the same name and the photos are moved to specified storage on the server. Photo records are then saved to the database that take the filename and filepath inputs.
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
 # USE CASE 2
 # input: image or image folder
 # output: json array with technical and aesthetic rating of each picture
@@ -123,12 +134,57 @@ def login_page():
 @app.route('/rating/', methods=["GET","POST"])
 def rating_photos():
 
+    # TODO check db to see if user has any images already uploaded, if yes, then delete them and then handle new uploaded files
     try:
 	
         if request.method == "POST":
             
-            filedata = form['upload']
-            
+            # check if the post request has the file part
+            if 'file[]' not in request.files:
+
+                return redirect(request.url)
+
+            # TODO handle files with same name
+            uploaded_files = request.files.getlist("file[]")     
+            if uploaded_files is None:
+                return redirect('/')  
+            for file in uploaded_files:
+                if file and allowed_file(file.filename):
+                    filename = secure_filename(file.filename)
+                    absoluteFilepath = app.config['UPLOAD_FOLDER'] + filename
+                    file.save(absoluteFilepath)
+                    try:
+                        user_id = request.cookies.get('loggedInUser')
+                        sql = "INSERT INTO Photo (filepath, user_id) VALUES (%s, %s)"
+                        val = (absoluteFilepath, user_id)
+                        mycursor.execute(sql, val)
+                        mydb.commit()
+
+                    except Exception as e:
+                        print(e);
+                        error = 'Unable to Upload Photos'
+                        return render_template('home.html', error = error)
+        
+            uploaded_directory = request.files.getlist("directory[]")
+            if uploaded_directory is None:
+                return redirect('/')  
+            for file in uploaded_directory:
+                if file and allowed_file(file.filename):
+                    filename = secure_filename(file.filename)
+                    absoluteFilepath = app.config['UPLOAD_FOLDER'] + filename
+                    file.save(absoluteFilepath)
+                    try:
+                        user_id = request.cookies.get('loggedInUser')
+                        sql = "INSERT INTO Photo (filepath, user_id) VALUES (%s, %s)"
+                        val = (absoluteFilepath, user_id)
+                        mycursor.execute(sql, val)
+                        mydb.commit()
+
+                    except Exception as e:
+                        print(e);
+                        error = 'Unable to Upload Photos'
+                        return render_template('home.html', error = error)
+                    
             # TODO move files to temp storage on server
             # TODO upload photo records to db
             # TODO pass photos to ranking system
@@ -143,6 +199,8 @@ def rating_photos():
         return redirect('/photoGallery/')
 
     except Exception as e:
+        
+        print(e); 
 
         return redirect('/')
 
