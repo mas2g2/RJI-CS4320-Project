@@ -1,5 +1,9 @@
 from flask import Flask, url_for, render_template, request, redirect
 import mysql.connector
+import subprocess
+import piexif
+import os
+from PIL import Image
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
@@ -98,6 +102,10 @@ def login_page():
                     mycursor.execute(sql, val)
                     mydb.commit()
                     
+                    userCredentialsQuery = "SELECT * FROM User WHERE username='"+ attempted_username +"' AND password='"+ attempted_password +"'"
+                    mycursor.execute(userCredentialsQuery)
+                    userCredentialsQueryResult = mycursor.fetchone()
+                    
                 except Exception as e:
                     print(e);
                     error = 'Failed to create account'
@@ -105,7 +113,7 @@ def login_page():
                 
                 # if successful, then redirect to homepage
                 response = redirect("http://3.17.206.109")
-                response.set_cookie('loggedInUser', attempted_username)
+                response.set_cookie('loggedInUser', userCredentialsQuery[0])
                 return response
 
         return redirect("http://3.17.206.109")
@@ -134,76 +142,112 @@ def allowed_file(filename):
 @app.route('/rating/', methods=["GET","POST"])
 def rating_photos():
 
-    # TODO check db to see if user has any images already uploaded, if yes, then delete them and then handle new uploaded files
+    # TODO set interval action that will check how old a photo is and delete old ones
     try:
-	
-        if request.method == "POST":
-            
-            # check if the post request has the file part
-            if 'file[]' not in request.files:
+        user_id = request.cookies.get('loggedInUser')
+        if user_id:
+            if request.method == "POST":
+                
+                # delete user's previous photos from server
+                userPhotosQuery = "SELECT * FROM Photo WHERE user_id="+ user_id
+                mycursor.execute(userPhotosQuery)
+                userPhotosQueryResults = mycursor.fetchall()
+                for photo in userPhotosQueryResults:
+                    removeCmd = "rm " + photo[1]
+                    subprocess_cmd(removeCmd)
+                
+                # delete all photo records previously in the database for this user
+                sql = "DELETE FROM Photo WHERE user_id = " + user_id
+                mycursor.execute(sql)
+                mydb.commit()
 
-                return redirect(request.url)
+                # check if the post request has the file part
+                if 'file[]' not in request.files:
 
-            # TODO handle files with same name
-            uploaded_files = request.files.getlist("file[]")     
-            if uploaded_files is None:
-                return redirect('/')  
-            for file in uploaded_files:
-                if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    absoluteFilepath = app.config['UPLOAD_FOLDER'] + filename
-                    file.save(absoluteFilepath)
-                    try:
-                        user_id = request.cookies.get('loggedInUser')
-                        sql = "INSERT INTO Photo (filepath, user_id) VALUES (%s, %s)"
-                        val = (absoluteFilepath, user_id)
-                        mycursor.execute(sql, val)
-                        mydb.commit()
+                    return redirect(request.url)
 
-                    except Exception as e:
-                        print(e);
-                        error = 'Unable to Upload Photos'
-                        return render_template('home.html', error = error)
+                filePathList = list()
+
+                # TODO handle files with same name
+                uploaded_files = request.files.getlist("file[]")     
+                if uploaded_files is None:
+                    return redirect('/')  
+                for file in uploaded_files:
+                    if file and allowed_file(file.filename):
+                        filename = secure_filename(file.filename)
+                        absoluteFilepath = app.config['UPLOAD_FOLDER'] + filename
+                        file.save(absoluteFilepath)
+                        try:
+                            user_id = request.cookies.get('loggedInUser')
+                            sql = "INSERT INTO Photo (filepath, user_id) VALUES (%s, %s)"
+                            val = (absoluteFilepath, user_id)
+                            mycursor.execute(sql, val)
+                            mydb.commit()
+                            filePathList.append(absoluteFilepath)
+
+                        except Exception as e:
+                            print(e);
+                            error = 'Unable to Upload Photos'
+                            return render_template('home.html', error = error)
+
+                uploaded_directory = request.files.getlist("directory[]")
+                if uploaded_directory is None:
+                    return redirect('/')  
+                for file in uploaded_directory:
+                    if file and allowed_file(file.filename):
+                        filename = secure_filename(file.filename)
+                        absoluteFilepath = app.config['UPLOAD_FOLDER'] + filename
+                        file.save(absoluteFilepath)
+                        try:
+                            user_id = request.cookies.get('loggedInUser')
+                            sql = "INSERT INTO Photo (filepath, user_id) VALUES (%s, %s)"
+                            val = (absoluteFilepath, user_id)
+                            mycursor.execute(sql, val)
+                            mydb.commit()
+                            filePathList.append(absoluteFilepath)
+
+                        except Exception as e:
+                            print(e);
+                            error = 'Unable to Upload Photos'
+                            return render_template('home.html', error = error)
+                        
+                # convert all files to lower-case .jpg
+                #
+                userPhotosQuery = "SELECT * FROM Photo WHERE user_id="+ user_id
+                mycursor.execute(userPhotosQuery)
+                userPhotosQueryResults = mycursor.fetchall()  
+
+                for photo in userPhotosQueryResults:
+                    # change file type to jpg
+                    # this assumes 3 char at end are file type
+                    im = Image.open(photo[1])
+                    filename = photo[1]
+                    filename = filename[:-3]
+                    filename += "jpg"
+                    im.save(filename)
+                    os.remove(photo[1])
+                    # update record in database to jpg
+                    sql = "UPDATE Photo SET filepath = '" + filename + "' WHERE filepath LIKE '" + photo[1] + "'"
+                    mycursor.execute(sql)
+                    mydb.commit()
         
-            uploaded_directory = request.files.getlist("directory[]")
-            if uploaded_directory is None:
-                return redirect('/')  
-            for file in uploaded_directory:
-                if file and allowed_file(file.filename):
-                    filename = secure_filename(file.filename)
-                    absoluteFilepath = app.config['UPLOAD_FOLDER'] + filename
-                    file.save(absoluteFilepath)
-                    try:
-                        user_id = request.cookies.get('loggedInUser')
-                        sql = "INSERT INTO Photo (filepath, user_id) VALUES (%s, %s)"
-                        val = (absoluteFilepath, user_id)
-                        mycursor.execute(sql, val)
-                        mydb.commit()
-
-                    except Exception as e:
-                        print(e);
-                        error = 'Unable to Upload Photos'
-                        return render_template('home.html', error = error)
-                    
-            # TODO move files to temp storage on server
-            # TODO upload photo records to db
-            # TODO pass photos to ranking system
-            # TODO update photo records to db with ranking system's output json
-            # TODO pass photo data in json array format to html template
-            # TODO rediretct to photo display gallery
-            
-            
-            
-        # USE CASE 3
-        # USE CASE 4
-        return redirect('/photoGallery/')
+                return redirect('/photoGallery/')
+        else:
+            return redirect('/login/')
+	
+        
 
     except Exception as e:
         
         print(e); 
-
         return redirect('/')
-
+    
+# help on this code from https://stackoverflow.com/questions/17742789/running-multiple-bash-commands-with-subprocess
+def subprocess_cmd(command):
+    process = subprocess.Popen(command,stdout=subprocess.PIPE, shell=True)
+    proc_stdout = process.communicate()[0].strip()
+    print(proc_stdout)
+    
 # USE CASE 3
 # images will have the option to click a link button that will have the attribute 'download' that will download a given picture upon mousedown
 # input: mousedown
@@ -213,9 +257,37 @@ def rating_photos():
 def photo_gallery():
     user_id = request.cookies.get('loggedInUser')
     if user_id:
-        return render_template("photoGallery.html")
+    
+        # run each file individually, batch too slow
+        #subprocess_cmd('cd image-quality-assessment; ./predict --docker-image nima-cpu --base-model-name MobileNet --weights-file /home/ubuntu/image-quality-assessment/models/MobileNet/weights_mobilenet_aesthetic_0.07.hdf5 --image-source /tmp/images')
+        #subprocess.run("cd image-quality-assessment && pwd")
+        
+        userPhotosQuery = "SELECT * FROM Photo WHERE user_id="+ user_id
+        mycursor.execute(userPhotosQuery)
+        userPhotosQueryResults = mycursor.fetchall()
+        
+        for photo in userPhotosQueryResults:
+            
+            myCommand = "cd image-quality-assessment; ./predict --docker-image nima-cpu --base-model-name MobileNet --weights-file /home/ubuntu/image-quality-assessment/models/MobileNet/weights_mobilenet_aesthetic_0.07.hdf5 --image-source " + photo[1]
+            
+            subprocess_cmd(myCommand)
+        
+        
+        
+        for photo in userPhotosQueryResults:
+            exif_dict = piexif.load(photo[1])
+            print(exif_dict['Exif'])
+            for ifd in ("0th", "Exif", "GPS", "1st"):
+                for tag in exif_dict[ifd]:
+                    print(piexif.TAGS[ifd][tag]["name"], exif_dict[ifd][tag])
+            #exif_dict = piexif.load(photo[1])
+            #print(exif_dict)
+        #print(userPhotosQueryResults)
+        return render_template("photoGallery.html", userPhotos = userPhotosQueryResults)
     else:
         return redirect("/login/") 
+    
+    
 
 
 @app.route('/logout/')
