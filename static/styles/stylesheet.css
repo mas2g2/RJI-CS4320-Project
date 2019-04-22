@@ -1,0 +1,490 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* -------------------------------------------------------Fonts------------------------------------------------------------ */
+@font-face {
+    font-family: 'moon_flower_boldregular';
+    src: url('fonts/moon_flower_bold-webfont.eot');
+    src: url('fonts/moon_flower_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/moon_flower_bold-webfont.woff2') format('woff2'),
+         url('fonts/moon_flower_bold-webfont.woff') format('woff'),
+         url('fonts/moon_flower_bold-webfont.ttf') format('truetype'),
+         url('fonts/moon_flower_bold-webfont.svg#moon_flower_boldregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+    font-family: 'moon_flowerregular';
+    src: url('fonts/moon_flower-webfont.eot');
+    src: url('fonts/moon_flower-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/moon_flower-webfont.woff2') format('woff2'),
+         url('fonts/moon_flower-webfont.woff') format('woff'),
+         url('fonts/moon_flower-webfont.ttf') format('truetype'),
+         url('fonts/moon_flower-webfont.svg#moon_flowerregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+	font-family: 'Open Sans', sans-serif;
+}
+/*
+New color scheme
+#0034F2
+#00C2F0
+#00F541
+#00C2F0
+*/
+
+
+/* ------------------------------------------------------universal-------------------------------------------------------- */
+body {
+	margin-top: 50px;
+    background-color: #fff;
+}
+.defaultbackgound{
+    background-color: #8D230F;
+}
+.center {
+ text-align: center;
+}
+.centerimg{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.centerdiv{
+    display: inline-block;
+    
+}
+.fillspace{
+     width: 90%;
+     margin: 10px auto;
+}
+.fillbutton{
+    width: 100%;
+    background-color: #FAEEB9;
+    color: #000;
+}
+.showcaserow:nth-child(odd){
+    background-color: #0e1736;
+    color: #FAEEB9 !important;
+}
+.showcaserow:nth-child(even){
+    background-color: #008022;
+    color: #0e1736 !important;
+}
+.showcaserow h2{
+	font-family: moon_flower_boldregular, Arial, Helvetica, sans-serif;
+    font-size: 30px;
+}
+.lightbluebg{
+    background-color: #0034F2;
+}
+.tealbg{
+    background-color: #00C2F0;
+}
+.greenbg{
+/*   background-color: #00F541; */
+    background-color: #008022;
+}
+.pmodal{
+    color: #000;
+}
+ol, ul {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+.skills {
+    background-color: #C99E10;
+    color: #0e1736;
+}
+.awards {
+    background-color: #0e1736;
+    color: #FAEEB9;
+}
+.warningmsg a{
+    color: #FAEEB9;
+    text-decoration: underline;
+}
+.moonflower {
+	font-family: moon_flower_boldregular, Arial, Helvetica, sans-serif;
+	font-size: 1.75em;
+}
+.mfheader{
+    font-size: 3.5em;
+}
+.nopadding{
+	padding: 0 !important;	
+	margin: 0 25px 0 0 !important;
+}
+.nomargin{
+	padding: 0 !important;	
+	margin: 0 0 0 0 !important;
+}
+.center {
+	text-align: center;
+}
+.moonflowerregular {
+	font-family: moon_flowerregular, Arial, Helvetica, sans-serif;
+	font-size: 1.75em;
+}
+.bluebg{
+    background-color: #0e1736;
+    color: #FAEEB9;
+}
+.redbg{
+    background-color: #003e4d;
+    color: #FAEEB9;
+}
+
+/* -------------------------------------------------------Navbar---------------------------------------------------------- */
+.navbar{
+    background: #1a1712 !important; /* main background */
+    border: none !important;
+}
+.navbar-brand{
+    color: #FFF !important; /* text in logo div */
+    text-shadow: none !important;
+}
+@media(max-width:990px){
+	.navbar-brand img{
+		height: 95%;
+    }
+}
+.navbar-brand:hover{
+    color: #000 !important; /* logo div text on hover */
+    text-shadow: none !important;
+    background: #CCC !important; /* logo background on hover */   
+}
+.navbar li a:link, .navbar li a:visited{
+    color: #E2E2E2 !important; /* main text */
+    text-shadow: none !important;
+}
+.navbar li a:hover{
+    color: #00708a !important; /* main text of each link on hover */
+    text-shadow: none !important;
+    background: #CCC !important; /* background of each link on hover */
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
+    background: #CCC !important; /* dropdown menu */
+}
+.dropdown-menu{
+    background: #FFF !important; /* dropdown menu */
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+.divider{
+    margin: 0 !important;
+}
+.moonflower {
+	font-family: moon_flower_boldregular, Arial, Helvetica, sans-serif;
+	font-size: 1.75em;
+}
+.nopadding{
+	padding: 0 !important;	
+	margin: 0 25px 0 0 !important;
+}
+.gfont{
+	font-family: 'Open Sans', sans-serif;
+}
+
+.navbar-right li{
+    margin: 12px 15px 12px 12px; !important;  
+}
+.navbar-right li a{
+    padding: 22px 5px !important;
+    display: inline !important;
+    margin-top: 15px !important;
+}
+.menudesc {
+	font-size: 1.15em;	
+}
+.previewborder{
+    border:3px solid black;
+}
+
+
+/* --------------------------------------------------------Hero Carousel----------------------------------------------- */
+#herocarousel {
+	background-color: #A7836E
+}
+
+/* ------------------------------------------------------------Footer-------------------------------------------------------- */
+.footer {
+	margin: 0 auto;
+	padding: 20px 0;
+	color: #FFF;
+	font-size: .8em;
+}
+.footer a{
+	color: #FFF;
+	text-decoration: underline;
+}
+.footerbg { 
+    background-color: #000;
+    padding-top: 25px;
+	width: 100%;
+}
+.footerlinkstable {
+	text-align: center;
+	margin: 0 auto 0 auto;
+}
+.footerlinkstable td {
+	padding: 2px 10px 2px 10px;
+}
+.footerheader {
+	text-align: center;
+	font-size: 1.5em;
+    text-transform: uppercase;
+}
+.footeraddress {
+	margin-top: 27px;
+}
+.footerwell {
+	background-color: #EFE2B7;
+}
+.footerwell h4 {
+    margin-left: 0;
+    padding-left: 0 !important;
+}
+.top {
+        padding-top: 10px;   
+    }
+
+.row{
+	padding-top: 25px;
+}
+.row p{
+	padding-top: 5px;
+}
+
+/* ------------------------------------------------------------Log In-------------------------------------------------------- */
+.login{
+    color: #0e1736;
+    background-color: teal;
+}
+.login a{
+    color: #0e1736;
+    text-decoration: underline;
+}
+.fillspace{
+     width: 90%;
+     margin: 10px auto;
+}
+.fillbutton{
+    width: 100%;
+    background-color: #FAEEB9;
+    color: #000;
+}
+.loginwindow{
+    border: 5px #0e1736 solid;
+    border-radius: 30px;
+    background-color: #9b3228;
+}
+.enlarge{
+    font-size: 4.5em;
+}
+.forgot{
+    color: #FAEEB9;
+    font-size: 1.5em;
+    text-align: right;
+    padding-right: 25px;
+}
+.forgot a{
+    color: #FAEEB9;
+}
+
+/* ------------------------------------------------------------Upload-------------------------------------------------------- */
+.testerdownloadbtn{
+    border: 5px #9b3228 solid;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 3em;
+    background-color: #0e1736;
+}
+.testerdownloadbtn:hover{
+    background-color: #000;
+    color: #ccc;
+}
+.downloadbtn{
+    border: 5px #0e1736 solid;
+    border-radius: 20px;
+    color: #000;
+    font-size: 3em;
+    background-color: #a8a8a8;
+}
+.downloadbtn:hover{
+    background-color: #919297;
+}
+
+/*------------------------------------------------------------Log In--------------------------------------------------------- */
+div#mainContent{
+    padding: 20px 0 130px 0;
+}
+.loader {
+    top: 40vh;
+    left: 45vw;
+    position: absolute;
+    z-index: 150;
+    border: 16px solid whitesmoke;
+    border-top: 20px solid purple;
+    width: 150px;
+    border-radius: 50%;
+    height: 150px;
+    animation: spin 1s linear infinite;
+}
+div#loginBox {
+    width: 30vw;
+    height: 60vh;
+    margin-top: 100px !important;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px 0px black;
+}
+.alert {
+    position: absolute;
+    top: 80px;
+    z-index: 1000;
+}
+.loginOverlay {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .85;
+/*    background-color: #5F7BBA;*/
+    background-image: linear-gradient(#5F7BBA, black);
+}
+.overlayContent {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    font-family: 'Courgette', cursive;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    transition: 0.4s;
+    font-size: 20px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    border: 3px purple solid;
+    border-style: none none solid none;
+}
+
+/* Style the tab content */
+.tabHiddenContent {
+    display: none;
+}
+
+div#login {
+    display: block;
+}
+
+div.overlayContent label {
+    font-family: 'Courgette', cursive;
+    color: white;
+}
+
+form#loginForm input[type=text] {
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+
+form#loginForm input[type=password] {
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+
+form#loginForm input[type=submit] {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    height: 30px;
+    background-color: #88E688;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    font-family: 'Courgette', cursive;
+}
+
+form#signUpForm input[type=text] {
+    width: 145px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+form#signUpForm #usernameLabel{
+    margin-left: 90px;
+}
+
+form#signUpForm input[type=password] {
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+
+form#signUpForm input[type=submit] {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    height: 30px;
+    background-color: #88E688;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    font-family: 'Courgette', cursive;
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+}
+body#loginBody {
+    background-color: #00C2F0;
+}
+body#loginBody hr {
+    width: 85vw;
+    margin: auto;
+    border: .5px lightgray solid;
+    border-radius: 2px;
+    opacity: .8;
+}

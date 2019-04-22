@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Northern Cafe and Bakery - 100% Gluten Free">
+	<meta name="keywords" content="Northern, Cafe, Northern Cafe, Gluten Free, Gluten-free, Northern Cafe and Bakery, Bakery">
+	<meta name="author" content="Lee's Summit North Advanced Web Team">
+    <meta name="copyright" content="(c) Copyright 2015 - Lee's Summit North High School">
+    
+	<title>Sort Images</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css"> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="myScript.js"></script>
+
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+    
+</head>
+    
+    
+<body id="loginBody">
+    
+    
+<!--------------------------------------------------------NAVBAR------------------------------------------------------------>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+    
+    	<!-- Brand and toggle get grouped for better mobile display -->
+    	<div class="navbar-header">
+    		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        		<span class="sr-only">Toggle navigation</span>
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+      		</button>
+      		<a class="navbar-brand nopadding" href="index.html"><img src="img/logo.png" alt="Northern Cafe and Bakery" class="img-responsive"></a>
+   		</div>
+
+    	<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+        		<li><a href="index.html"><p class="moonflower"><i class="fa fa-home"></i> Home</p></a></li>
+        		<li><a href="upload.html"><p class="moonflower"><i class="fa fa-camera-retro"></i> Upload</p></a></li>
+        		<li><a href="graphics.html"><p class="moonflower"><i class="fa fa-image"></i> View Images</p></a></li>
+			</ul><!-- Navbar-Left -->
+			<ul class="nav navbar-nav navbar-right">
+                <li class="moonflower"><a href="login.html"><i class="fa fa fa-user"></i>&nbsp;Sign In</a></li>
+            </ul>
+    	</div><!-- /.navbar-collapse -->
+    
+  	</div><!-- /.container-fluid -->
+</nav>
+<!------------------------------------------------------End Navbar---------------------------------------------------------->
+
+
+
+
+<div id="mainContent">
+    <div id="loader"></div>
+        {% if error %}
+            <div class="alert alert-warning" role="alert">
+              {{ error }}
+            </div>
+        {% endif %}
+    <div id="loginBox">
+        <img src="https://bloximages.newyork1.vip.townnews.com/columbiamissourian.com/content/tncms/assets/v3/editorial/c/3d/c3d57598-769b-11e5-b280-abe871bfdcbe/56254b643855b.image.jpg" alt="login background image">
+
+        <div class="loginOverlay">
+            <div class="overlayContent">
+
+                <div class="tab">
+                  <button class="tablinks active" onclick="selectTab(event, 'login')">Login</button>
+                  <button id="signUpTab" class="tablinks" onclick="selectTab(event, 'signup')">Sign Up</button>
+                </div>
+
+                <div id="login" class="tabHiddenContent">
+                    <form id="loginForm" action="/login/" method="post">
+
+                        <input type="hidden" name="action" value="loginMeIn">
+                        <br>
+                        <label id="usernameLabel" for="username">Username:</label>
+                        <br>
+                        <input type="text" id="username" name="username" placeholder="Username" autofocus>
+                        <br>
+                        <br>
+                        <label id="passwordLabel" for="password">Password:</label>
+                        <br>
+                        <input type="password" id="password" name="password" placeholder="Password" >
+                        <br>
+                        <input id="loginButton" type="submit" form="loginForm" onclick="showLoader()" class="button" value="Log In">
+                    </form>
+                </div>
+
+                <div id="signup" class="tabHiddenContent">
+                  <form id="signUpForm" action="/login/" method="post">
+
+                        <input type="hidden" name="action" value="signMeUp">
+
+                        <label id="nameLabel" for="name">Name:</label>
+                        <br>
+                        <input type="text" id="first_name" name="first_name" placeholder="First">
+                        <input type="text" id="last_name" name="last_name" placeholder="Last">
+                        <br>
+                        <br>
+                        <label id="emailLabel" for="name">Email:</label>
+
+                        <label id="usernameLabel" for="username">Username:</label>
+
+                        <br>
+                        <input type="text" id="email" name="email" placeholder="Email">
+
+                        <input type="text" id="username" name="username" placeholder="Username" autofocus>
+                        <br>
+                        <br>
+                        <label id="passwordLabel" for="password">Password:</label>
+                        <br>
+                        <input type="password" id="password" name="password" placeholder="Password">
+                        <br>
+                        <input id="loginButton" type="submit" form="signUpForm" class="button" value="Sign Up">
+                    </form>
+                </div>
+            </div><!--End Overlay Content-->
+        </div><!--End Login Overlay-->
+    </div><!-- End Login box-->
+</div><!--End Main Div-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!------------------------------------------------------------Footer------------------------------------------------------->
+ 	<div class="container-fluid footerbg">
+    	<div class="row-fluid">
+            
+            <div class="col-md-1"> </div>
+            
+            <div class="col-md-10 footer">
+                <p class="center footerheader"><a href="Aboutthissite.html">About this site</a></p>
+                <p>Copyright &copy; 2019 - CS 4320 Group 15 | All Rights Reserved. This page was created by Christopher Foeller, Milesh Shah and Joshua Thompson. No portion of this page may be copied without the permission of the <a href="mailto:cjfoeller0404@gmail.com">webmaster</a>. If you require assistance navigating or accessing this website, please contact Christopher Foeller at <a href="mailto:cjfoeller0404@gmail.com">cjfoeller0404@gmail.com</a>. If you have any farther concerns or just any questions in general, please contact Christopher Foeller at <a href="mailto:cjfoeller0404@gmail.com">cjfoeller0404@gmail.com</a></p>
+                <br>
+                <p class="center">Page Last Updated on 
+                    <!-- #BeginDate format:Am1 -->April 12, 2019<!-- #EndDate -->
+                </p>   
+            </div>
+            
+            <div class="col-md-1"> </div>
+            
+       	</div>
+	</div>
+<!----------------------------------------------------------End Footer----------------------------------------------------->
+
+
+
+
+
+
+<script>
+  wow = new WOW(
+    {
+        boxClass:     'wow',      // default
+        animateClass: 'animated', // change this if you are not using animate.css
+        offset:       0,          // default
+        mobile:       true,       // keep it on mobile
+        live:         true        // track if element updates
+      }
+    )
+   wow.init();
+</script>
+
+</body>
+</html>

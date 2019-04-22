@@ -1,0 +1,962 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #79CDCD;
+}
+a {
+    text-decoration: none;
+}
+
+nav {
+    position: fixed;
+    width: 100vw;
+    top: 0;
+}
+
+.navbar {
+    position: relative;
+    top: 0;
+    z-index: 10000  ;
+    overflow: hidden;
+    background-color: transparent;
+    padding: 10px 15px 0 0;
+    height: 80px;
+    transition: background-color .7s ease; 
+}
+
+.navbar .navLink {
+    float: right;
+    font-family: 'Courgette', cursive;
+    padding-left: 15px;
+    font-size: 20px;
+    margin-right: 45px;
+    margin-top: 20px;
+    color: #DFF9F9;
+}
+
+.sidebar{
+    position: absolute;
+    z-index: 10001;
+    right: 0;
+    top: 0;
+    float: right;
+    overflow: hidden;
+    width: 0px;
+    background-color: #ABE7E7;
+    box-shadow: 0 0 5px 0 black;
+    border-radius: 0px 0px 0px 5px;
+}
+
+.sidebar-content{
+    width: 300px;
+    padding: 10px;
+}
+
+.sidebarOverlay {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 50;
+    top: 0;
+    left: 0;
+    background-color: darkgray;
+    opacity: .7;
+    display: none;
+}
+
+button.fa-bars {
+    float: right;
+    color: #DFF9F9;
+    font-size: 45px;
+    margin: auto;
+    background-color: transparent;
+    border: none;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+button.fa-bars:hover{
+    cursor: pointer;
+}
+
+.navbar img {
+    height: 70px;
+    position: absolute;
+    z-index: 11;
+    top: 0px;
+}
+
+
+div.logoCircle {
+    float: left;
+    position: relative;
+    top: -5px;
+    z-index: 10;
+    height: 75px;
+    width: 75px;
+    margin-left: 30px;
+    border-radius: 40px;
+}
+
+
+.navbar #header {
+    font-family: 'Courgette', cursive;
+    float: left;
+    padding-left: 15px;
+    font-size: 40px;
+    margin-top: 7px;
+    color: whitesmoke;
+}
+
+.sidebar-content hr {
+    border-color: #DFF9F9;
+    border-style: solid none none none;
+    margin: 0 40px 0 0;
+}
+
+.sidebar-content h3 {
+    color: black;
+    line-height: 50px;
+    margin: 0;
+}
+
+.sidebar-content h3:hover {
+    background-color: darkgrey;
+}
+
+body#loginBody hr {
+    width: 85vw;
+    margin: auto;
+    border: .5px lightgray solid;
+    border-radius: 2px;
+    opacity: .8;
+}
+
+body#loginBody {
+    background-color: #00C2F0;
+}
+
+div#mainContent{
+    padding-top: 80px;
+}
+
+div#loginBox {
+    width: 30vw;
+    height: 60vh;
+    margin-top: 100px !important;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px 0px black;
+}
+
+form#loginForm {
+    position: relative;
+    z-index: 100;
+}
+
+div#loginBox img {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: auto;
+    margin: -30px 0 0 0;
+}
+
+.loginOverlay {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .85;
+/*    background-color: #5F7BBA;*/
+    background-image: linear-gradient(#5F7BBA, black);
+}
+
+.overlayContent {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}
+
+
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    font-family: 'Courgette', cursive;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    transition: 0.4s;
+    font-size: 20px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    border: 3px purple solid;
+    border-style: none none solid none;
+}
+
+/* Style the tab content */
+.tabHiddenContent {
+    display: none;
+}
+
+div#login {
+    display: block;
+}
+
+div.overlayContent label {
+    font-family: 'Courgette', cursive;
+    color: white;
+}
+
+form#loginForm input[type=text] {
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+
+form#loginForm input[type=password] {
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+
+form#loginForm input[type=submit] {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    height: 30px;
+    background-color: #88E688;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    font-family: 'Courgette', cursive;
+}
+
+form#signUpForm input[type=text] {
+    width: 145px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+form#signUpForm #usernameLabel{
+    margin-left: 90px;
+}
+
+form#signUpForm input[type=password] {
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+
+form#signUpForm input[type=submit] {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    height: 30px;
+    background-color: #88E688;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    font-family: 'Courgette', cursive;
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+}
+
+.crop-main-picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.crop-main-picture img {
+    width: 100%;
+    height: auto;
+    margin: 0 0 0 0;
+}
+
+body#homeBody hr {
+    width: 85vw;
+    margin: auto;
+    border: .5px lightgray solid;
+    border-radius: 2px;
+    opacity: .8;
+}
+
+div.carousel-container {
+    position: relative;
+    height: 500px;
+    overflow: hidden;
+}
+
+div.carousel-container .slide {
+    display: none;
+    overflow: hidden;
+}
+
+div.carousel-container .slide .slideLink {
+    position: absolute;
+    z-index: 40;
+    top: 70%;
+    right: 15%;
+    background-color: transparent;
+    color: white;
+    border: 1px #DFF9F9 solid;
+    height: 80px;
+    width: 150px;
+    transition: .9s ease;
+    cursor: pointer;
+}
+
+
+
+.slideOverlay {
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    background-image: linear-gradient(transparent, black);
+}
+
+
+
+
+
+
+div.carousel-container .slide .slideLink:hover {
+    background-color: #ABE7E7; 
+}
+
+div.carousel-container #slide1 {
+    display: block;
+}
+
+div.carousel-container span.nextSlide {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    height: 70px;
+    width: 40px;
+    z-index: 30;
+    background-color: #DFF9F9;
+    opacity: .4;
+    cursor: pointer;
+    transition: .8s ease;
+}
+
+div.carousel-container span.previousSlide {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 70px;
+    width: 40px;
+    z-index: 30;
+    background-color: #DFF9F9;
+    opacity: .4;
+    cursor: pointer;
+    transition: .8s ease;
+}
+
+div.carousel-container span.nextSlide:hover {
+    opacity: .9;
+}
+
+div.carousel-container span.previousSlide:hover {
+    opacity: .9;
+}
+
+div.carousel-container i {
+    position: absolute;
+    top: 37%;
+    left: 35%;
+    font-size: 20px;
+}
+
+div.background-image {
+    width: 100vw;
+    height: 80vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -3;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+div.background-image img{
+    width: 100%;
+    height: auto;
+    margin: 0 0 0 0;
+}
+
+.crop-slide {
+  width: 100vw;
+  height: 80vh;
+  overflow: hidden;
+  margin-bottom: 0;
+}
+
+.crop-slide img {
+  width: 100%;
+  height: auto;
+  margin: 0 0 0 0;
+}
+
+#pageContent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;
+}
+
+.banner {
+    height: 25px;
+    background-color: #0086A5;
+} 
+
+#features-container {
+    height: 200px;
+    padding-top: 20px;
+    background-color: #DFF9F9;
+}
+
+.feature {
+    float: left;
+    position: relative;
+    z-index: 30;
+    cursor: pointer;
+    margin-left: 6.25vw;
+    margin-top: 40px;
+}
+
+.crop-feature {
+    position: relative;
+    width: 25vw;
+    height: 40vh;
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.crop-feature img {
+    width: 100%;
+    height: auto;
+    min-height: 40vh;
+    margin: 0 0 0 0;
+}
+
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    height: 10%;
+    width: 100%;
+    opacity: .9;
+    transition: .9s ease;
+    background-color: #008CBA;
+}
+
+.crop-feature:hover .overlay {
+    height: 100%;
+}
+
+.crop-feature:hover .featureOverlayContent {
+    display: block;
+}
+
+.featureOverlayContent {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#featureHeading {
+    text-align: center;
+    font-size: 40px;
+    font-family: 'Courgette', cursive;
+}
+
+hr#featureHR {
+    width: 10vw;
+    margin: auto;
+    border-color: #DFF9F9;
+    border-style: solid none none none;
+}
+
+
+.crop-feature:hover .upArrow {
+    display: none;
+}
+
+/* help with arrow animation from https://codepad.co/snippet/AYXI3hjg*/
+
+.arrowAnimation {
+	animation: bounce 3s infinite;
+}
+
+.upArrow{
+	position: absolute;
+    color: #DFF9F9;
+	bottom: 11%;
+	left: 47%;
+    font-size: 25px;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+#partition {
+    height: 50px;
+    width: 100vw;
+    background-color: #2F8E8E;
+}
+
+#shape {
+    float: right;
+    position: relative;
+    z-index: 0;
+    top: -150px;
+}
+
+#shape polygon{
+    fill: #4EABAB;
+}
+
+#additionalInformation {
+    height: 500px;
+    width: 100vw;
+    padding-top: 5%;
+    background-color: #E1FCE1;
+}
+
+.crop-author-picture {
+    position: absolute;
+    width: 20vw;
+    height: 33%;
+    z-index: 1;
+    overflow: hidden;
+    margin-bottom: 0;
+    border: 2px #E2EAFA solid;
+    border-style: none none solid none;
+    transition: height .8s ease;
+}
+
+.crop-author-picture img {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    margin: 0 0 0 0;
+}
+
+#additionalInfoPic1 {
+    top: 0;
+    left: 0;
+}
+
+#additionalInfoPic2 {
+    top: 34%;
+    left: 0;
+}
+
+#additionalInfoPic3 {
+    top: 68%;
+    left: 0;
+}
+
+#additionalInfoPic1:hover {
+    height: 35vh;
+    z-index: 10;
+}
+
+#additionalInfoPic2:hover {
+    height: 35vh;
+    z-index: 10;
+}
+
+#additionalInfoPic3:hover {
+    height: 35vh;
+    z-index: 10;
+}
+
+svg#trianglePic1:hover + #additionalInfoPic1{
+    height: 35vh;
+    z-index: 10;
+}
+
+svg#trianglePic2:hover + #additionalInfoPic2 {
+    height: 35vh;
+    z-index: 10;
+}
+
+svg#trianglePic3:hover + #additionalInfoPic3 {
+    height: 35vh;
+    z-index: 10;
+}
+
+#images-container {
+    margin-left: 15%;
+    position: relative;
+    height: 40vh;
+    width: 20vw;
+    float: left;
+}
+
+svg#trianglePic1 {
+    position: absolute;
+    fill: #79CDCD;
+    top: 0;
+    left: -25%;
+    height: 33.33%;
+    width: 25%;
+}
+
+svg#trianglePic2 {
+    position: absolute;
+    fill: #79CDCD;
+    top: 34%;
+    left: -25%;
+    height: 33.33%;
+    width: 25%;
+}
+
+svg#trianglePic3 {
+    position: absolute;
+    fill: #79CDCD;
+    top: 68%;
+    left: -25%;
+    height: 33.33%;
+    width: 25%;
+}
+#additionalInfoTextContainer {
+    float: left;
+    margin-left: 15%;
+    position: relative;
+    height: 41vh;
+    width: 40vw;
+    border-bottom: .5px black solid;
+    border-right: .5px black solid;
+}
+
+#topLeftCorner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 60px;
+    border-left: 15px #4EABAB solid;
+    border-top: 15px #4EABAB solid;
+}
+
+#quoteContainer {
+    height: 70%;
+    width: 80%;
+    background-color: #79CDCD;
+    opacity: .6;
+    border-radius: 15px;
+    margin: auto;
+    margin-top: 8%;
+    padding: 15px;
+}
+
+#featuredQuote {
+    position: relative;
+    top: 25%;
+    text-align: center;
+    font-family: 'Courgette', cursive;
+}
+
+#aboutUsContent {
+    position: relative;
+    top: 120px;
+    z-index: -1;
+    height: 150vh;
+    width: 90vw;
+    margin: auto;
+    background-color: #E1FCE1;
+}
+
+.crop-author {
+    width: 20vw;
+    height: 30vh;
+    overflow: hidden;
+    margin-bottom: 0;
+    border-radius: 15px 15px 0 0;
+}
+
+.crop-author img {
+    width: 100%;
+    height: auto;
+    margin: -100px 0 0 0;
+}
+
+.crop-article-picture {
+    width: 20vw;
+    margin-top: 10%;
+    height: 20vh;
+    overflow: hidden;
+    margin-bottom: 0;
+    border-radius: 15px;
+}
+
+.crop-article-picture img {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    margin: 0 0 0 0;
+}
+
+#articleBox {
+    padding: 15px;
+}
+
+.about-author {
+    height: 20vh;
+    width: 20vw;
+    background-color: white;
+    opacity: .9;
+    border-radius: 0 0 15px 15px;
+    font-family: 'Courgette', cursive;
+}
+.about-author p{
+    margin-left: 10px;
+}
+
+#authorBox {
+    position: sticky;
+    position: -webkit-sticky;
+    display: inline;
+    float:left;
+    top: 180px;
+}
+
+.spacing {
+    width: 30px;
+    float:left;
+    height: 10px;
+}
+
+.article-content {
+    float: left;
+    margin-left: 5%;
+    margin-top: 15px;
+    width: 60%;
+    height: auto;
+    font-family: 'Courgette', cursive;
+    font-size: 33px;
+    text-indent: -25px;
+    padding-left: 35px;
+}
+
+.sidebar-content {
+    font-family: 'Courgette', cursive;
+    font-size: 20px;
+}
+
+.exit-sidebar {
+    font-size: 30px;
+    cursor: pointer;
+    text-align: right;
+}
+
+.youtubeVideo {
+    height: 100%;
+    width: 100%;
+}
+
+.videoContainer {
+    height: 250px;
+    width: 90%;
+    margin: auto;
+}
+
+#buttonGroup .btn{
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+}
+
+#buttonGroup {
+    font-family: 'Courgette', cursive;
+    font-size: 20px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.alert {
+    position: absolute;
+    top: 80px;
+    z-index: 1000;
+}
+
+.loader {
+    top: 40vh;
+    left: 45vw;
+    position: absolute;
+    z-index: 150;
+    border: 16px solid whitesmoke;
+    border-top: 20px solid purple;
+    width: 150px;
+    border-radius: 50%;
+    height: 150px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+#uploadBtn {
+    background-color: #00C333;
+    color: white;
+}
+
+#mainGalleryContent {
+    position: relative;
+    z-index: -10;
+}
+
+.showcaserow {
+    position: relative;
+    z-index: -10;
+}
+
+#galleryHeading {
+    margin-top: 150px;
+}
+
+.homePageRating {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 45px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: forestgreen;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+#checkboxContainer {
+    display: inline-block;
+    margin-top: 2vh;
+}
+
+#checkboxWrapper {
+    text-align: center;
+}

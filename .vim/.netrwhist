@@ -1,0 +1,4 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =2
+let g:netrw_dirhist_1='/etc/mysql/mysql.conf.d'
+let g:netrw_dirhist_2='/tmp/images/testFolder_17211983_1392045190815735_2705038477652790699_o.jpg'
