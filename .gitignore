@@ -1,0 +1,15 @@
+.chache
+.config
+.docker
+.local
+.ssh
+.vim
+_pychache_
+.bash_logout
+.bashrc
+.mysql_history
+.profile
+.python_history
+.sudo_as_admin_successful
+.viminfo
+
