@@ -215,17 +215,15 @@
 <div class="container-fluid prevwebpage" id="graphicstage">
     
 {% if userPhotos %}
-    {% set count = 1 %}
-    {% for photo_row in userPhotos | slice(4) %}
+    {% for photo in userPhotos %}
     <div class="row showcaserow  wow fadeIn">
-        {% for photo in photo_row %}
         <div class="col-md-3">
             <a href="{{photo}}"><p class="center"><img src="{{photo}}" alt="Image: {{photo}}" class="img-responsive centerimg previewborder"></p></a><br>
-            <p class="center"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#img{{count}}">
+            <p class="center"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#img">
               More Information
             </button></p>
 
-            <div class="modal fade" id="img{{count}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal fade" id="img" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -235,7 +233,7 @@
                   <div class="modal-body">
                     <p class="pmodal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet arcu auctor hendrerit. Vestibulum ornare eget libero eget lacinia. Suspendisse potenti. Suspendisse aliquam libero non lectus accumsan, et luctus quam pretium. Etiam suscipit erat eget erat mattis.</p>
                       <p class="pmodal">Category: [CATEGORY]</p>
-                      <p class="pmodal">Rating: {{photo['Rating']}}</p>
+                      <p class="pmodal">Rating: {{ photo['Rating'] }}</p>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -244,8 +242,6 @@
               </div>
             </div>
         </div>
-        {% set count = count + 1 %}
-        {% endfor %}
     </div>
     {% endfor %}
 {% endif %}  

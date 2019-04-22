@@ -20,10 +20,10 @@
 $
 
 # Command Line History (newest to oldest):
+:q!
+|2,0,1555958377,,"q!"
 :wq
 |2,0,1555887461,,"wq"
-:q!
-|2,0,1555885291,,"q!"
 :wq!
 |2,0,1555881075,,"wq!"
 :q
@@ -109,40 +109,52 @@ $
 |3,1,36,0,1,0,1555880714,"-"
 
 # File marks:
-'0  302  0  ~/app.py
-|4,48,302,0,1555887461,"~/app.py"
-'1  103  24  ~/image-quality-assessment/src/evaluater/predict.py
-|4,49,103,24,1555885563,"~/image-quality-assessment/src/evaluater/predict.py"
-'2  260  0  ~/app.py
-|4,50,260,0,1555885291,"~/app.py"
-'3  260  0  ~/app.py
-|4,51,260,0,1555885291,"~/app.py"
-'4  330  0  ~/app.py
-|4,52,330,0,1555883831,"~/app.py"
-'5  330  0  ~/app.py
-|4,53,330,0,1555883831,"~/app.py"
-'6  330  0  ~/app.py
-|4,54,330,0,1555883831,"~/app.py"
-'7  330  0  ~/app.py
-|4,55,330,0,1555883831,"~/app.py"
-'8  285  7  ~/app.py
-|4,56,285,7,1555883652,"~/app.py"
-'9  285  7  ~/app.py
-|4,57,285,7,1555883652,"~/app.py"
+'0  312  0  ~/app.py
+|4,48,312,0,1555958377,"~/app.py"
+'1  302  0  ~/app.py
+|4,49,302,0,1555887461,"~/app.py"
+'2  302  0  ~/app.py
+|4,50,302,0,1555887461,"~/app.py"
+'3  103  24  ~/image-quality-assessment/src/evaluater/predict.py
+|4,51,103,24,1555885563,"~/image-quality-assessment/src/evaluater/predict.py"
+'4  260  0  ~/app.py
+|4,52,260,0,1555885291,"~/app.py"
+'5  260  0  ~/app.py
+|4,53,260,0,1555885291,"~/app.py"
+'6  260  0  ~/app.py
+|4,54,260,0,1555885291,"~/app.py"
+'7  260  0  ~/app.py
+|4,55,260,0,1555885291,"~/app.py"
+'8  330  0  ~/app.py
+|4,56,330,0,1555883831,"~/app.py"
+'9  330  0  ~/app.py
+|4,57,330,0,1555883831,"~/app.py"
 
 # Jumplist (newest first):
+-'  312  0  ~/app.py
+|4,39,312,0,1555958377,"~/app.py"
+-'  302  0  ~/app.py
+|4,39,302,0,1555958367,"~/app.py"
 -'  302  0  ~/app.py
 |4,39,302,0,1555887461,"~/app.py"
+-'  260  0  ~/app.py
+|4,39,260,0,1555887365,"~/app.py"
 -'  260  0  ~/app.py
 |4,39,260,0,1555887365,"~/app.py"
 -'  103  24  ~/image-quality-assessment/src/evaluater/predict.py
 |4,39,103,24,1555885563,"~/image-quality-assessment/src/evaluater/predict.py"
 -'  103  24  ~/image-quality-assessment/src/evaluater/predict.py
 |4,39,103,24,1555885563,"~/image-quality-assessment/src/evaluater/predict.py"
+-'  103  24  ~/image-quality-assessment/src/evaluater/predict.py
+|4,39,103,24,1555885563,"~/image-quality-assessment/src/evaluater/predict.py"
+-'  103  24  ~/image-quality-assessment/src/evaluater/predict.py
+|4,39,103,24,1555885563,"~/image-quality-assessment/src/evaluater/predict.py"
 -'  260  0  ~/app.py
 |4,39,260,0,1555885291,"~/app.py"
 -'  260  0  ~/app.py
 |4,39,260,0,1555885291,"~/app.py"
+-'  330  0  ~/app.py
+|4,39,330,0,1555883872,"~/app.py"
 -'  330  0  ~/app.py
 |4,39,330,0,1555883872,"~/app.py"
 -'  330  0  ~/app.py
@@ -164,6 +176,8 @@ $
 -'  285  7  ~/app.py
 |4,39,285,7,1555883815,"~/app.py"
 -'  285  7  ~/app.py
+|4,39,285,7,1555883815,"~/app.py"
+-'  285  7  ~/app.py
 |4,39,285,7,1555883652,"~/app.py"
 -'  285  7  ~/app.py
 |4,39,285,7,1555883652,"~/app.py"
@@ -171,6 +185,8 @@ $
 |4,39,285,7,1555883394,"~/app.py"
 -'  285  7  ~/app.py
 |4,39,285,7,1555883394,"~/app.py"
+-'  176  22  ~/app.py
+|4,39,176,22,1555883358,"~/app.py"
 -'  176  22  ~/app.py
 |4,39,176,22,1555883358,"~/app.py"
 -'  176  22  ~/app.py
@@ -216,9 +232,13 @@ $
 -'  131  22  ~/app.py
 |4,39,131,22,1555883285,"~/app.py"
 -'  131  22  ~/app.py
+|4,39,131,22,1555883285,"~/app.py"
+-'  131  22  ~/app.py
 |4,39,131,22,1555883176,"~/app.py"
 -'  131  22  ~/app.py
 |4,39,131,22,1555883176,"~/app.py"
+-'  70  22  ~/app.py
+|4,39,70,22,1555883121,"~/app.py"
 -'  70  22  ~/app.py
 |4,39,70,22,1555883121,"~/app.py"
 -'  70  22  ~/app.py
@@ -279,28 +299,8 @@ $
 |4,39,141,22,1555882972,"~/app.py"
 -'  141  22  ~/app.py
 |4,39,141,22,1555882972,"~/app.py"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
--'  29  17  ~/RJI-CS4320-Project/schema.sql
-|4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
+-'  141  22  ~/app.py
+|4,39,141,22,1555882972,"~/app.py"
 -'  29  17  ~/RJI-CS4320-Project/schema.sql
 |4,39,29,17,1555881622,"~/RJI-CS4320-Project/schema.sql"
 -'  29  17  ~/RJI-CS4320-Project/schema.sql
@@ -335,8 +335,8 @@ $
 # History of marks within files (newest to oldest):
 
 > ~/app.py
-	*	1555887460	0
-	"	302	0
+	*	1555958375	0
+	"	312	0
 	^	1	23
 	.	9	35
 	+	9	35

@@ -1520,3 +1520,13 @@ ll
 cd templates/
 cd  ..
 exit
+ls
+history
+ls
+ps -ef
+sudo python3 app.py 
+hop
+top
+ps -ef
+sudo kill 24627
+sudo python3 app.py 
