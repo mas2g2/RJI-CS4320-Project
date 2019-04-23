@@ -3,20 +3,13 @@ import mysql.connector
 import subprocess
 import piexif
 import os
+import json
+import time
 from PIL import Image
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
 
-# TODO set up read_db_config
-mydb = mysql.connector.connect(
-  host="ec2-3-17-206-109.us-east-2.compute.amazonaws.com",
-  user="adminUser",
-  passwd="password123",
-  database="rjiDB"
-)
-mycursor = mydb.cursor()
-
-UPLOAD_FOLDER = '/tmp/images/'
+UPLOAD_FOLDER = '/home/ubuntu/static/img/tmp/'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER 
 ALLOWED_EXTENSIONS = set(['txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'])
 
@@ -38,6 +31,14 @@ def login():
 def login_page():
 
     try: 
+        # TODO set up read_db_config
+        mydb = mysql.connector.connect(
+          host="ec2-3-14-73-158.us-east-2.compute.amazonaws.com",
+          user="adminUser",
+          passwd="password123",
+          database="rjiDB"
+        )
+        mycursor = mydb.cursor()
 	       
         if request.method == "POST":
             
@@ -60,7 +61,7 @@ def login_page():
                     
                 else:
                     
-                    response = redirect("http://3.17.206.109")
+                    response = redirect("http://3.14.73.158")
                     print(userCredentialsQueryResult)
                     response.set_cookie('loggedInUser', str(userCredentialsQueryResult[0]))
                     
@@ -112,18 +113,20 @@ def login_page():
                     return render_template('login.html', error = error)
                 
                 # if successful, then redirect to homepage
-                response = redirect("http://3.17.206.109")
+                response = redirect("http://3.14.73.158")
                 response.set_cookie('loggedInUser', userCredentialsQuery[0])
                 return response
 
-        return redirect("http://3.17.206.109")
+        return redirect("http://3.14.73.158")
 
     except Exception as e:
 
-        response = redirect("http://3.17.206.109")
+        response = redirect("http://3.14.73.158")
         response.set_cookie('exception', e)
 
         return response
+    finally:
+        mycursor.close()
 		
 # USE CASE 1
 # input: folder of images or single image file
@@ -144,6 +147,15 @@ def rating_photos():
 
     # TODO set interval action that will check how old a photo is and delete old ones
     try:
+        # TODO set up read_db_config
+        mydb = mysql.connector.connect(
+          host="ec2-3-14-73-158.us-east-2.compute.amazonaws.com",
+          user="adminUser",
+          passwd="password123",
+          database="rjiDB"
+        )
+        mycursor = mydb.cursor()
+        
         user_id = request.cookies.get('loggedInUser')
         if user_id:
             if request.method == "POST":
@@ -186,7 +198,7 @@ def rating_photos():
                             filePathList.append(absoluteFilepath)
 
                         except Exception as e:
-                            print(e);
+                            print(e)
                             error = 'Unable to Upload Photos'
                             return render_template('home.html', error = error)
 
@@ -207,7 +219,7 @@ def rating_photos():
                             filePathList.append(absoluteFilepath)
 
                         except Exception as e:
-                            print(e);
+                            print(e)
                             error = 'Unable to Upload Photos'
                             return render_template('home.html', error = error)
                         
@@ -217,20 +229,37 @@ def rating_photos():
                 mycursor.execute(userPhotosQuery)
                 userPhotosQueryResults = mycursor.fetchall()  
 
+                
+                
                 for photo in userPhotosQueryResults:
-                    # change file type to jpg
-                    # this assumes 3 char at end are file type
-                    im = Image.open(photo[1])
-                    filename = photo[1]
-                    filename = filename[:-3]
-                    filename += "jpg"
-                    im.save(filename)
-                    os.remove(photo[1])
-                    # update record in database to jpg
-                    sql = "UPDATE Photo SET filepath = '" + filename + "' WHERE filepath LIKE '" + photo[1] + "'"
-                    mycursor.execute(sql)
-                    mydb.commit()
+                    originalFileName = photo[1]
+                    if originalFileName[-3:] == "JPG":
+                        # change file type to jpg
+                        # this assumes 3 char at end are file type
+                        im = Image.open(photo[1])
+                        filename = photo[1]
+                        filename = filename[:-3]
+                        filename += "jpg"
+                        rgb_im = im.convert('RGB')
+                        rgb_im.save(filename)
+                        os.remove(photo[1])
+
+                        # update record in database to jpg
+                        sql = "UPDATE Photo SET filepath = '" + filename + "' WHERE filepath LIKE '" + photo[1] + "'"
+                        mycursor.execute(sql)
+                        mydb.commit()
+                    elif originalFileName != "jpg":
+                        pass
         
+                userPhotosQuery = "SELECT * FROM Photo WHERE user_id="+ user_id
+                mycursor.execute(userPhotosQuery)
+                userPhotosQueryResults = mycursor.fetchall()
+                for photo in userPhotosQueryResults:
+                    print(photo[1])
+                    myCommand = "cd image-quality-assessment; ./predict --docker-image nima-cpu --base-model-name MobileNet --weights-file /home/ubuntu/image-quality-assessment/models/MobileNet/weights_mobilenet_aesthetic_0.07.hdf5 --image-source " + photo[1]
+                    print(myCommand)
+                    subprocess_cmd(myCommand)
+                    
                 return redirect('/photoGallery/')
         else:
             return redirect('/login/')
@@ -238,9 +267,11 @@ def rating_photos():
         
 
     except Exception as e:
-        
         print(e); 
         return redirect('/')
+    
+    finally:
+        mycursor.close()
     
 # help on this code from https://stackoverflow.com/questions/17742789/running-multiple-bash-commands-with-subprocess
 def subprocess_cmd(command):
@@ -255,40 +286,121 @@ def subprocess_cmd(command):
 # The photo gallery template will dynamically load the images that are passed to it from the json object created on the backend after receiving the photo ratings. In the case of a large number of files being submitted, batches of files are loaded to the page via AJAX. The photos are displayed in a grid fashion. From here, the user will be be able to download images. A user can click an image to view more details about it or click each photo’s download button to download individually. The user also has the option to select all the photos to download via a checkbox. For this task the system will require: JavaScript, HTML, Python, an image, and a web server
 @app.route('/photoGallery/')
 def photo_gallery():
-    user_id = request.cookies.get('loggedInUser')
-    if user_id:
     
-        # run each file individually, batch too slow
-        #subprocess_cmd('cd image-quality-assessment; ./predict --docker-image nima-cpu --base-model-name MobileNet --weights-file /home/ubuntu/image-quality-assessment/models/MobileNet/weights_mobilenet_aesthetic_0.07.hdf5 --image-source /tmp/images')
-        #subprocess.run("cd image-quality-assessment && pwd")
+    try:
+        # TODO set up read_db_config
+        mydb = mysql.connector.connect(
+          host="ec2-3-14-73-158.us-east-2.compute.amazonaws.com",
+          user="adminUser",
+          passwd="password123",
+          database="rjiDB"
+        )
+        mycursor = mydb.cursor()
         
-        userPhotosQuery = "SELECT * FROM Photo WHERE user_id="+ user_id
-        mycursor.execute(userPhotosQuery)
-        userPhotosQueryResults = mycursor.fetchall()
-        
-        for photo in userPhotosQueryResults:
-            
-            myCommand = "cd image-quality-assessment; ./predict --docker-image nima-cpu --base-model-name MobileNet --weights-file /home/ubuntu/image-quality-assessment/models/MobileNet/weights_mobilenet_aesthetic_0.07.hdf5 --image-source " + photo[1]
-            
-            subprocess_cmd(myCommand)
-        
-        
-        
-        for photo in userPhotosQueryResults:
-            exif_dict = piexif.load(photo[1])
-            print(exif_dict['Exif'])
-            for ifd in ("0th", "Exif", "GPS", "1st"):
-                for tag in exif_dict[ifd]:
-                    print(piexif.TAGS[ifd][tag]["name"], exif_dict[ifd][tag])
-            #exif_dict = piexif.load(photo[1])
-            #print(exif_dict)
-        #print(userPhotosQueryResults)
-        return render_template("photoGallery.html", userPhotos = userPhotosQueryResults)
-    else:
-        return redirect("/login/") 
-    
-    
+        user_id = request.cookies.get('loggedInUser')
+        if user_id: 
 
+            # run each file individually, batch too slow
+            #subprocess_cmd('cd image-quality-assessment; ./predict --docker-image nima-cpu --base-model-name MobileNet --weights-file /home/ubuntu/image-quality-assessment/models/MobileNet/weights_mobilenet_aesthetic_0.07.hdf5 --image-source /tmp/images')
+            #subprocess.run("cd image-quality-assessment && pwd")
+
+            userPhotosQuery = "SELECT * FROM Photo WHERE user_id=" + user_id
+            mycursor.execute(userPhotosQuery)
+            userPhotosQueryResults = mycursor.fetchall()
+
+            relativePath, Rating = [], []
+            for photo in userPhotosQueryResults:
+                referencePath = photo[1].replace('/home/ubuntu/','')
+                # {key:value mapping}
+
+                relativePath.append(referencePath)
+                Rating.append(photo[2])
+
+            photoArray = [{"Rating": t, "relativePath": s} for t, s in zip(Rating, relativePath)]
+
+            userPhotos = json.loads(json.dumps(photoArray))
+
+            print(userPhotos)
+
+            # add tags
+    #        for photo in userPhotosQueryResults:
+    #            exif_dict = piexif.load(photo[1])
+    #            print(exif_dict['Exif'])
+    #            for ifd in ("0th", "Exif", "GPS", "1st"):
+    #                for tag in exif_dict[ifd]:
+    #                    print(piexif.TAGS[ifd][tag]["name"], exif_dict[ifd][tag])
+
+            return render_template("photoGallery.html", userPhotos = userPhotos, imgr = 0)
+        else:
+            return redirect("/login/") 
+    
+    except Exception as e:
+        print(e)
+        return redirect('/')
+
+    finally:
+        mycursor.close()
+
+
+@app.route('/getRating/', methods=["GET","POST"])
+def get_Rating():
+    try:
+        # if request.form['imgrating']:
+        #option = request.form['options']
+        imgr = request.form['imgrating']
+
+        # TODO set up read_db_config
+        mydb = mysql.connector.connect(
+        host="ec2-3-14-73-158.us-east-2.compute.amazonaws.com",
+        user="adminUser",
+        passwd="password123",
+        database="rjiDB"
+        )
+        mycursor = mydb.cursor()
+        
+        user_id = request.cookies.get('loggedInUser')
+        if user_id: 
+
+            # run each file individually, batch too slow
+            #subprocess_cmd('cd image-quality-assessment; ./predict --docker-image nima-cpu --base-model-name MobileNet --weights-file /home/ubuntu/image-quality-assessment/models/MobileNet/weights_mobilenet_aesthetic_0.07.hdf5 --image-source /tmp/images')
+            #subprocess.run("cd image-quality-assessment && pwd")
+
+            userPhotosQuery = "SELECT * FROM Photo WHERE user_id=" + user_id
+            mycursor.execute(userPhotosQuery)
+            userPhotosQueryResults = mycursor.fetchall()
+
+            relativePath, Rating = [], []
+            for photo in userPhotosQueryResults:
+                referencePath = photo[1].replace('/home/ubuntu/','')
+                # {key:value mapping}
+
+                relativePath.append(referencePath)
+                Rating.append(photo[2])
+
+            photoArray = [{"Rating": t, "relativePath": s} for t, s in zip(Rating, relativePath)]
+
+            userPhotos = json.loads(json.dumps(photoArray))
+
+            print(userPhotos)
+
+            # add tags
+    #        for photo in userPhotosQueryResults:
+    #            exif_dict = piexif.load(photo[1])
+    #            print(exif_dict['Exif'])
+    #            for ifd in ("0th", "Exif", "GPS", "1st"):
+    #                for tag in exif_dict[ifd]:
+    #                    print(piexif.TAGS[ifd][tag]["name"], exif_dict[ifd][tag])
+
+            return render_template("photoGallery.html", userPhotos = userPhotos, imgr = float(imgr))
+        else:
+            return redirect("/login/") 
+    
+    except Exception as e:
+        print(e)
+        return redirect('/')
+
+    finally:
+        mycursor.close()
 
 @app.route('/logout/')
 def logout():

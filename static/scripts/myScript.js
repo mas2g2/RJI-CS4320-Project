@@ -87,6 +87,11 @@ $(document).ready(function(){
         }
     });
 
+
+    $('#downloadBtn').click(function(e){
+        console.log("hello");
+        $('.download').trigger("click");
+    });
     
 });
 
@@ -155,3 +160,4 @@ function showLoader() {
 function filter(){
     
 }
+

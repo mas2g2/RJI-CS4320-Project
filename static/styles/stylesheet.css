@@ -54,6 +54,10 @@ body {
     margin-left: auto;
     margin-right: auto;
 }
+.centerdiv{
+    display: inline-block;
+    
+}
 .fillspace{
      width: 90%;
      margin: 10px auto;
@@ -136,90 +140,41 @@ ol, ul {
 }
 
 /* -------------------------------------------------------Navbar---------------------------------------------------------- */
-/*
 .navbar{
-    background: #1a1712 !important;  main background 
+    background: #1a1712 !important; /* main background */
     border: none !important;
 }
-*/
-/*
 .navbar-brand{
-    color: #EFE2B7 !important;  text in logo div 
+    color: #FFF !important; /* text in logo div */
     text-shadow: none !important;
 }
-*/
-/*
 @media(max-width:990px){
 	.navbar-brand img{
 		height: 95%;
-		padding-left: 10px;
-	}
-	body{
-		padding-top: 50px;
-	}
-}
-@media (max-width: 990px) {
-    .navbar-header {
-        float: none;
-    }
-    .navbar-toggle {
-        display: block;
-    }
-*/
-    /*.navbar-collapse {
-        border-top: 1px solid transparent;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
-    }
-    .navbar-collapse.collapse {
-        display: none!important;
-    }*/
-/*
-    .navbar-nav {
-        float: none!important;
-        margin: 7.5px -15px;
-    }
-    .navbar-nav>li {
-        float: none;
-    }
-    .navbar-nav>li>a {
-        padding-top: 10px;
-        padding-bottom: 10px;
     }
 }
-*/
-/*
 .navbar-brand:hover{
-    color: #000 !important;  logo div text on hover 
+    color: #000 !important; /* logo div text on hover */
     text-shadow: none !important;
-    background: #CCC !important; 
+    background: #CCC !important; /* logo background on hover */   
 }
-*/
-/*
 .navbar li a:link, .navbar li a:visited{
-    color: #EFE2B7 !important;  main text 
+    color: #E2E2E2 !important; /* main text */
     text-shadow: none !important;
 }
-*/
-/*
 .navbar li a:hover{
-    color: #00708a !important; 
+    color: #00708a !important; /* main text of each link on hover */
     text-shadow: none !important;
-    background: #CCC !important; 
+    background: #CCC !important; /* background of each link on hover */
 }
-*/
-/*
 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover{
-    background: #CCC !important;  dropdown menu 
+    background: #CCC !important; /* dropdown menu */
 }
-*/
-/*
 .dropdown-menu{
-    background: #FFF !important;  dropdown menu 
+    background: #FFF !important; /* dropdown menu */
     border-radius: 0 !important;
     padding: 0 !important;
 }
-*/
-/*
 .divider{
     margin: 0 !important;
 }
@@ -249,7 +204,6 @@ ol, ul {
 .previewborder{
     border:3px solid black;
 }
-*/
 
 
 /* --------------------------------------------------------Hero Carousel----------------------------------------------- */
@@ -363,4 +317,174 @@ ol, ul {
 }
 .downloadbtn:hover{
     background-color: #919297;
+}
+
+/*------------------------------------------------------------Log In--------------------------------------------------------- */
+div#mainContent{
+    padding: 20px 0 130px 0;
+}
+.loader {
+    top: 40vh;
+    left: 45vw;
+    position: absolute;
+    z-index: 150;
+    border: 16px solid whitesmoke;
+    border-top: 20px solid purple;
+    width: 150px;
+    border-radius: 50%;
+    height: 150px;
+    animation: spin 1s linear infinite;
+}
+div#loginBox {
+    width: 30vw;
+    height: 60vh;
+    margin-top: 100px !important;
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px 0px black;
+}
+.alert {
+    position: absolute;
+    top: 80px;
+    z-index: 1000;
+}
+.loginOverlay {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: .85;
+/*    background-color: #5F7BBA;*/
+    background-image: linear-gradient(#5F7BBA, black);
+}
+.overlayContent {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+}/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    font-family: 'Courgette', cursive;
+    color: white;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 10px;
+    transition: 0.4s;
+    font-size: 20px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    border: 3px purple solid;
+    border-style: none none solid none;
+}
+
+/* Style the tab content */
+.tabHiddenContent {
+    display: none;
+}
+
+div#login {
+    display: block;
+}
+
+div.overlayContent label {
+    font-family: 'Courgette', cursive;
+    color: white;
+}
+
+form#loginForm input[type=text] {
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+
+form#loginForm input[type=password] {
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+
+form#loginForm input[type=submit] {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    height: 30px;
+    background-color: #88E688;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    font-family: 'Courgette', cursive;
+}
+
+form#signUpForm input[type=text] {
+    width: 145px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+form#signUpForm #usernameLabel{
+    margin-left: 90px;
+}
+
+form#signUpForm input[type=password] {
+    width: 300px;
+    margin: auto;
+    height: 30px;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+}
+
+form#signUpForm input[type=submit] {
+    width: 300px;
+    margin: auto;
+    margin-top: 20px;
+    height: 30px;
+    background-color: #88E688;
+    font-size: 15px;
+    border: none;
+    padding: 5px 10px 5px 10px;
+    border-radius: 30px;
+    font-family: 'Courgette', cursive;
+}
+
+input[type=submit]:hover {
+    cursor: pointer;
+}
+body#loginBody {
+    background-color: #00C2F0;
+}
+body#loginBody hr {
+    width: 85vw;
+    margin: auto;
+    border: .5px lightgray solid;
+    border-radius: 2px;
+    opacity: .8;
 }
