@@ -26,12 +26,11 @@ CREATE TABLE `Photo` (
   `photo_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `filepath` varchar(255) NOT NULL,
   `aesthetic_rating` float DEFAULT NULL,
-  `technical_rating` float DEFAULT NULL,
   `user_id` int(10) unsigned NOT NULL,
   PRIMARY KEY (`photo_id`),
   KEY `Photo_User_FK` (`user_id`),
   CONSTRAINT `Photo_User_FK` FOREIGN KEY (`user_id`) REFERENCES `User` (`user_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=599 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -50,7 +49,7 @@ CREATE TABLE `User` (
   `last_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
