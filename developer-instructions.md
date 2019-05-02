@@ -30,8 +30,8 @@ To create a user for the database server run commads:
 	"sudo mysql"
 
 When in MySQL monitor create database user with commands:
-	"GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';"
-	"FLUSH PRIVILEGES"
+- "GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';"
+- "FLUSH PRIVILEGES"
 
 Go to directory "etc/mysql" and open file my.cnf.fallback and change the bind_address to 0.0.0.0
 
