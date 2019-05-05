@@ -1,12 +1,16 @@
 ## Install : Flask, Python3, MySQL, Docker
 
-To install run commands: ```sudo apt install python3-pip```,
+To install run commands: 
+
+```sudo apt install python3-pip```,
 			 ```pip3 install Flask```,
 			 ```pip3 install mysql-connector-python```
 
 Link for installing Docker: https://docs.docker.com/install/
 
-To install Docker 18.06 through terminal run command: ```sudo snap install docker```
+To install Docker 18.06 through terminal run command: 
+
+```sudo snap install docker```
 
 Uninstall older versions of docker with command:
 
