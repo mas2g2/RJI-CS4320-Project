@@ -1,3 +1,7 @@
+## Update Packages on Server
+
+```sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove```
+
 ## Install : Flask, Python3, MySQL, Docker
 
 To install run commands: 
