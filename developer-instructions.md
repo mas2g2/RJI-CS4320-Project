@@ -20,12 +20,15 @@ Uninstall older versions of docker with command:
 ## Clone Repository
 
 To clone or download this project into your system run command:
-			 ```git clone https://github.com/mas2g2/RJI-CS4320-Project```
+
+```git clone https://github.com/mas2g2/RJI-CS4320-Project```
 
 
 Note: Our project uses a system from another github repository called image-quality-assessment from user idealo, which is included in our repository. When editing any python script in this folder, your must rebuild a docker image after editing it. 
 
-To build the docker image run: ```docker build -t nima-cpu . -f Dockerfile.cpu```
+To build the docker image run: 
+
+```docker build -t nima-cpu . -f Dockerfile.cpu```
 
 Use the command above to build a docker image, since the image-quality-assessment code will be runninig on the docker image.
 
