@@ -10,10 +10,11 @@ To install Docker 18.06 through terminal run command: ```sudo snap install docke
 
 Uninstall older versions of docker with command: ```sudo apt-get remove docker docker-engine docker.io containerd runc```
 
-To build docker image: docker build -t nima-cpu . -f Dockerfile.cpu
 
-Note: Our project uses a project from another github repository called image-quality-assessment from user idealo.(
-To clone this project run command ```git clone https://github.com/idealo/image-quality-assessment```), when editing any python script in this folder, your must build a docker image after editing it. 
+Note: Our project uses a project from another github repository called image-quality-assessment from user idealo, which is included in our repository when editing any python script in this folder, your must build a docker image after editing it. 
+
+To build docker image: ```docker build -t nima-cpu . -f Dockerfile.cpu```
+
 Use the command above to build a docker image, since this code will be runninig on the docker image.
 
 To clone or download this project into your system run command:
