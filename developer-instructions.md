@@ -47,6 +47,8 @@ Run through the steps for secure installation:
 
 ```sudo mysql_secure_installation```
 
+Steps of Installation:
+
 ```
 Enter password for user root: TYPE CURRENT ROOT PASSWORD
 
@@ -109,12 +111,22 @@ Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
 ```
 
 To create database and tables run commands:
-	```sudo mysql -u root -p```
-When in MySQL monitor create database with command:
-	```create database rjiDB```
-	```use rjiDB```
-	```\. schema.sql``` //Creates tables
 
+	```sudo mysql -u root -p```
+	
+When in MySQL monitor create database with command:
+	
+	Create Database:
+	
+	```create database rjiDB```
+	
+	Switch to Using that Database:
+	
+	```use rjiDB```
+	
+	Generate Tables:
+	
+	```\. schema.sql```
 
 ## Databse Configuration and Connection
 
