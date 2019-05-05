@@ -47,7 +47,8 @@ Run through the steps for secure installation:
 
 ```sudo mysql_secure_installation```
 
-```Enter password for user root: TYPE CURRENT ROOT PASSWORD
+```
+Enter password for user root: TYPE CURRENT ROOT PASSWORD
 
 VALIDATE PASSWORD PLUGIN can be used to test passwords
 and improve security. It checks the strength of password
@@ -62,7 +63,7 @@ LOW    Length >= 8
 MEDIUM Length >= 8, numeric, mixed case, and special characters
 STRONG Length >= 8, numeric, mixed case, special characters and dictionary file
 
-Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 2
+Please enter 0 = LOW, 1 = MEDIUM and 2 = STRONG: 1
 Using existing password for root.
 
 Estimated strength of the password: 50 
@@ -94,7 +95,7 @@ environment.
 
 
 Remove test database and access to it? (Press y|Y for Yes, any other key for No) : y
- - Dropping test database...
+ - Dropping test database
 Success.
 
  - Removing privileges on test database...
@@ -103,7 +104,9 @@ Success.
 Reloading the privilege tables will ensure that all changes
 made so far will take effect immediately.
 
-Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y```
+Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
+
+```
 
 To create database and tables run commands:
 	```sudo mysql -u root -p```
