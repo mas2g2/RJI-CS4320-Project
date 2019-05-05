@@ -38,7 +38,7 @@ Go to directory ```etc\mysql``` and open file my.cnf.fallback and change the bin
 
 To connect to database go to line 36 in function login_page() and change name of host to:
 
-	- <URL of ec2 instance, example : ```ec2-1-23-45-678.us-east-2.compute.amazonaws.com```>
+	- <URL of ec2 instance, example : "ec2-1-23-45-678.us-east-2.compute.amazonaws.com">
 
 Note: It is highly recommended that you run this project on an ec2 instance
 
