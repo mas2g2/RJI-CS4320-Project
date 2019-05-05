@@ -33,10 +33,16 @@ To build the docker image run:
 Use the command above to build a docker image, since the image-quality-assessment code will be runninig on the docker image.
 
 
-## Creating Databse
+## Install MySQL and Create Databse
+
+```sudo apt-get install mysql-server mysql-client```
+
+```sudo systemctl start mysql.service```
+
+```sudo mysql_secure_installation```
 
 To create database and tables run commands:
-	```sudo mysql```
+	```sudo mysql -u root -p```
 When in MySQL monitor create database with command:
 	```create database rjiDB```
 	```use rjiDB```
