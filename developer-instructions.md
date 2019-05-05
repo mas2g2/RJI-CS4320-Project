@@ -150,18 +150,19 @@ Go to directory ```/etc/mysql/mysql.conf.d``` and open file ```mysqld.cnf``` and
 
 ```bind_address=0.0.0.0```
 
-To connect to database go to function login_page() and change credentials to connect to your database:
+To connect to database create a init.txt file in the same directory as app.py and insert your database credentials as follows
 
-	- host : <URL of ec2 instance, example : "ec2-1-23-45-678.us-east-2.compute.amazonaws.com">
-	- username : <your-username>
-	- password : <your-password>
-	- database : "rjiDB"
+	- host   	// URL of ec2 instance, ex.) ec2-1-23-45-678.us-east-2.compute.amazonaws.com
+	- username 	// <your-db-username>
+	- password 	// <your-db-password>
+	- database	// <database-to-connect-to>
 
-Note: It is highly recommended that you run this project on an ec2 instance
+Note: It is highly recommended that you run this project on an aws ec2 instance
 
 ## Launch Project
 
 To launch project run command: 
 
-- ```sudo python3 app.py```
-- Copy URL of ec2 instance and paste it on browser
+```sudo python3 app.py```
+
+Copy URL of ec2 instance and paste it on browser
