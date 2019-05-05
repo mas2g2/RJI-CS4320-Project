@@ -94,7 +94,7 @@ Content: Christopher Foeller
 
 Peer Review: Joshua Thompson, Milesh Shah
 
-![alt text](photofiltering(1).jpg)
+![alt text](photofiltering(2).jpg)
 
 Use Case Description
 
