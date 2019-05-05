@@ -146,7 +146,9 @@ When in MySQL monitor create database user with commands:
 
 - ```FLUSH PRIVILEGES```
 
-Go to directory ```/etc/mysql/mysql.conf.d``` and open file mysqld.cnf and change the bind_address to 0.0.0.0
+Go to directory ```/etc/mysql/mysql.conf.d``` and open file ```mysqld.cnf``` and update bind_address to 
+
+```bind_address=0.0.0.0```
 
 To connect to database go to function login_page() and change credentials to connect to your database:
 
