@@ -102,14 +102,14 @@ Use Case 3: Filtering Images
 
 Description: 
 
-- The user, photo editor filters the images, that is the user selects which images will be downloaded based on their rating
+- The user, photo editor filters the images, that is the user selects which images will be downloaded based on their rating and category
 
 Triggers:
 
-- Choosing category of Image
 - Submitting image for rating
-- Using rating as metadata for image
-- Select image based on rating
+- Choosing category of Image
+- Selecting minimum rating of image
+- Click submit button to only display only images that meet criteria specified by the user
 
 Actors
 
