@@ -6,7 +6,7 @@ To install run commands: ```sudo apt install python3-pip```,
 
 Link for installing Docker: https://docs.docker.com/install/
 
-To install Docker 18.06, run command: ```sudo snap install docker```
+To install Docker 18.06 through terminal run command: ```sudo snap install docker```
 
 Uninstall older versions of docker with command: ```sudo apt-get remove docker docker-engine docker.io containerd runc```
 
