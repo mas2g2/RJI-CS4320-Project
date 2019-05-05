@@ -1,0 +1,5 @@
+## User Guide
+
+  If the user has an account, the user, let’s call him Sebastian who is a photo editor, will login and be redirected to the system’s homepage. If Sebastian does not have an account, he will sign up to the system by creating an account and will be redirected to the system’s homepage.
+
+  Once Sebastian has successfully created an account and logged into the site, he will be navigated to the home page that will allow him to upload their images for rating. By clicking the upload button, Sebastian will be able to either upload their photos individually or as an entire directory. The server will take in these photos and give all of them a rating 0-10. Sebastian is automatically redirected to the image gallery upon submission. At the gallery, Sebastian will be able to customize the search settings and find the images that he has uploaded that meet these requirements. Additionally, in the gallery Sebastian can view each of the photo’s rating and choose to download each image as they please or download all the images that are currently. 
