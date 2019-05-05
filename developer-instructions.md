@@ -1,5 +1,7 @@
 ## Update Packages on Server
 
+Note: This project is best run on Ubuntu 18.04
+
 ```sudo apt-get update && sudo apt-get dist-upgrade && sudo apt-get autoremove```
 
 ## Install : Flask, Python3, MySQL, Docker
