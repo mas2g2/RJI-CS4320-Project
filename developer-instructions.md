@@ -137,14 +137,16 @@ Generate Tables:
 ## Databse Configuration and Connection
 
 To create a user for the database server run commads:
-	```sudo mysql```
+
+```sudo mysql -u root -p```
 
 When in MySQL monitor create database user with commands:
 
 - ```GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' IDENTIFIED BY 'password';```
+
 - ```FLUSH PRIVILEGES```
 
-Go to directory ```etc\mysql``` and open file my.cnf.fallback and change the bind_address to 0.0.0.0
+Go to directory ```/etc/mysql/mysql.conf.d``` and open file mysqld.cnf and change the bind_address to 0.0.0.0
 
 To connect to database go to function login_page() and change credentials to connect to your database:
 
