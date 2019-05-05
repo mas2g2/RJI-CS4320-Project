@@ -7,14 +7,14 @@ Use Case 1: Submitting Images to System
 
 Description:
 
-- The Photo Editor logs into the system and submits an image of a category to the system
+- The Photo Editor logs into the system and submits an image(s)/folder the system
 
 Triggers:
-
+- Click Upload Photos button 
+- Select whether files or folders will be uploaded
 - Click File Chooser button
-- Select Image or Folder to submit
-- Drag Image or folder for submission
-- Submit image/folder to the system
+- Select Image(s) or Folder to submit
+- Click Rate Photos button
 
 Actors
 
@@ -22,22 +22,23 @@ Actors
 
 Preconditions
 
-- Photo Editor has an account registered to the system and images of a particular category in his/her device for submitting to the system
+- Photo Editor has an account registered to the system and image(s) or a folder of images in his/her device for submitting to the system
 
 Main Success Scenario
 
-- The user chooses to submit an image or folder to the system
-- The user chooses the category of image that will be submitted
-- The user clicks file chooser button
-- The user selects image that will be submitted to the system or drags and drops the image that will be submitted
+- The user chooses to submit an image(s) or folder to the system
+- The user clicks Upload Phtos button
+- The user decides whether files or a folder will be uploaded
+- The user selects image that will be submitted to the system 
+- The user clicks Rate Photos
 
 Failed End Condition
 
-- Photo does not belong to the category the user selected
+- User does not select image(s)/folder to upload before clicking Rate Photos button
 
 Steps of Execution
 
-- The user chooses to submit an image to the system. The user decides what the category of the image that will be submitted is. The user is in the submission page where he or she clicks on the file chooser to pick and image or folder that will be selected or dragged to the page for submission. The user clicks the submit button to submit the image. The system returns a number that trates the picture
+- When the user reaches the system's homepage, the user clicks the Upload Photos button. When the Upload Photos button is clicked, the user decides whether individual images will be uploaded or a folder will be uploaded. Then the user selects the image(s)/folder that will be uploaded. The user clicks Rate Photos button.
 
 Content: Milesh Shah
 
@@ -135,7 +136,7 @@ Failed End Condition
 
 Steps of Execution
 
-- The Photo Editor connects to the home page. There the user decides to submit and image for rating. The user first selects the category of image for rating. Then the user selects the images that will be submitted and submits the images. Then the submitted images are rated and the rating is put as the image’s metadata and then the user selects the images based on their rating.
+- The Photo Editor connects to the home page. There the user decides to submit and image for rating. The user first selects the category of image for rating. Then the user selects the images that will be submitted and submits the images. Then the submitted images are rated and the rating is put as the imageâ€™s metadata and then the user selects the images based on their rating.
 
 
 
