@@ -53,13 +53,13 @@ Use Case 2: Download Images
 
 Description:
 
-- The user logs in to the site, and is able to select images for a given category and downloads images that receive at least the rating specified by the user
+- The user logs in to the site, uploads and submits images and downloads images of a particular category that receive at least the rating specified by the user
 
 Triggers:
 
 - Select Wanted Categories
 - Select Minimum Rating Wanted
-- Select Images to Download
+- Click images that will be downloaded or click Download All button to download all images
 
 Actors
 
@@ -88,7 +88,7 @@ Failed End Condition
 
 Steps of Execution
 
-- The Photo Editor connects to the login page, submits the login form and gets access to the login page. The user chooses to go to the download images webpage and selects the categories and the minimum rating they want to pull images for. From there, the user will be shown all of the images that match their request, where they will be able to choose the image(s) they would like to download. There will also be a select all option so that the user can quickly download all of the images that match their request. Once the user is ready, they will hit the download button to start the download of the images they selected.
+- The Photo Editor connects to the login page, submits the login form and gets access to the login page. The user chooses to go to the download images webpage and selects the categories and the minimum rating they want to pull images for. From there, the user will be shown all of the images that match their request, where they will be able to choose the image(s) they would like to download. There will also be a download all option so that the user can quickly download all of the images that match their request. Once the user is ready, they will click the images that he or she wwants to download to download the images.
 
 Content: Christopher Foeller
 
@@ -118,25 +118,24 @@ Actors
 Preconditions
 
 - Photo editor has an account in the system
-- Photo editor has images for submission
+- Photo editor has images/folder for submission
 - Photo editor has submitted images for rating
 - Images have been rated
 
 Main Success Scenario 
 
 - Photo Editor goes to home page
-- Photo editor chooses category of image to submit
-- Photo editor submits image
+- Photo editor submits image/folder
 - Images are submitted and rated
 - Photo editor selects images based on rating 
 
 Failed End Condition
 
-- No images match the raating the user requests
+- No images match the rating the user requests
 
 Steps of Execution
 
-- The Photo Editor connects to the home page. There the user decides to submit and image for rating. The user first selects the category of image for rating. Then the user selects the images that will be submitted and submits the images. Then the submitted images are rated and the rating is put as the image’s metadata and then the user selects the images based on their rating.
+- The Photo Editor connects to the home page. There the user decides to submit and image for rating.  The user selects the images/folder that will be submitted and submits the images. Then the submitted images are rated and the rating is put as the image’s metadata and then the user selects the images based on their rating.
 
 
 
@@ -154,7 +153,6 @@ Workflow of System
 
 - Login
 - Submit folder of images to system
-  - (optional) select category of images ex. Football, Pop-News, Mixed (default), etc.
 - User is displayed a wall of the images that each show a rating
   - Can filter and sort based on given ratings
   - Can download images based on rating
