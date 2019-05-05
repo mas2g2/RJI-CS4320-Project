@@ -127,7 +127,7 @@ Main Success Scenario
 - Photo Editor goes to home page
 - Photo editor submits image/folder
 - Images are submitted and rated
-- Photo editor selects images based on rating 
+- Photo editor selects images based on rating and category
 
 Failed End Condition
 
@@ -154,7 +154,7 @@ Workflow of System
 - Login
 - Submit folder of images to system
 - User is displayed a wall of the images that each show a rating
-  - Can filter and sort based on given ratings
+  - Can filter and sort based on given ratings and category
   - Can download images based on rating
 - Logout
 
@@ -162,15 +162,17 @@ Use Cases :
 
 - Submit images to system:
 
-1. Select Category of Image
-2. Drag and Drop Image/ Folder
+1. Click Upload Photos button
+2. Decide whether image(s) or a folder will be uploaded
+3. Select files or folder that will be uploaded
+4. Click Rate Photos button
 
 - Download Images:
 
-1. User can download images over a specified rating received for an images
-2. User specifies the rating that an image must receive so that it may be downloaded
+1. User can download images over a specified rating received for an images and the image's category
+2. User specifies the rating that an image must receive  and the category of image so that it may be downloaded
 
 - Filtering Images:
 
-1. User puts image's rating as metadata
-2. User chooses images based on their rating
+1. User puts image's rating and category as metadata
+2. User chooses images based on their rating and category
