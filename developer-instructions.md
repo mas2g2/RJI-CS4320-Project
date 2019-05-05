@@ -1,4 +1,4 @@
-Install : Flask, Python3, MySQL, Docker
+##Install : Flask, Python3, MySQL, Docker
 
 To install run commands: ```sudo apt install python3-pip```,
 			 ```pip3 install Flask```,
@@ -17,8 +17,12 @@ To build docker image: ```docker build -t nima-cpu . -f Dockerfile.cpu```
 
 Use the command above to build a docker image, since this code will be runninig on the docker image.
 
+##Clone Repository
+
 To clone or download this project into your system run command:
 			 ```git clone https://github.com/mas2g2/RJI-CS4320-Project```
+
+## Creating Databse
 
 To create database and tables run commands:
 	```sudo mysql```
@@ -26,6 +30,9 @@ When in MySQL monitor create database with command:
 	```create database rjiDB```
 	```use rjiDB```
 	```\. schema.sql``` //Creates tables
+
+
+##Databse Configuration and Connection
 
 To create a user for the database server run commads:
 	```sudo mysql```
@@ -45,6 +52,8 @@ To connect to database go to function login_page() and change credentials to con
 	- database : "rjiDB"
 
 Note: It is highly recommended that you run this project on an ec2 instance
+
+##Launch Project
 
 To launch project run command: 
 
