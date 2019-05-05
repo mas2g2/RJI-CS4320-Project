@@ -8,7 +8,8 @@ Link for installing Docker: https://docs.docker.com/install/
 
 To install Docker 18.06 through terminal run command: ```sudo snap install docker```
 
-Uninstall older versions of docker with command: ```sudo apt-get remove docker docker-engine docker.io containerd runc```
+Uninstall older versions of docker with command:
+```sudo apt-get remove docker docker-engine docker.io containerd runc```
 
 
 ## Clone Repository
