@@ -36,9 +36,12 @@ When in MySQL monitor create database user with commands:
 
 Go to directory ```etc\mysql``` and open file my.cnf.fallback and change the bind_address to 0.0.0.0
 
-To connect to database go to line 36 in function login_page() and change name of host to:
+To connect to database go to function login_page() and change credentials to connect to your database:
 
-	- <URL of ec2 instance, example : "ec2-1-23-45-678.us-east-2.compute.amazonaws.com">
+	- host : <URL of ec2 instance, example : "ec2-1-23-45-678.us-east-2.compute.amazonaws.com">
+	- username : <your-username>
+	- password : <your-password>
+	- database : "rjiDB"
 
 Note: It is highly recommended that you run this project on an ec2 instance
 
