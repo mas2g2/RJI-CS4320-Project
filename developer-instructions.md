@@ -112,21 +112,21 @@ Reload privilege tables now? (Press y|Y for Yes, any other key for No) : y
 
 To create database and tables run commands:
 
-	```sudo mysql -u root -p```
+```sudo mysql -u root -p```
 	
 When in MySQL monitor create database with command:
 	
-	Create Database:
+Create Database:
 	
-	```create database rjiDB```
+```create database rjiDB```
 	
-	Switch to Using that Database:
+Switch to Using that Database:
 	
-	```use rjiDB```
+```use rjiDB```
 	
-	Generate Tables:
+Generate Tables:
 	
-	```\. schema.sql```
+```\. schema.sql```
 
 ## Databse Configuration and Connection
 
