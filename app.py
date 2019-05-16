@@ -167,7 +167,7 @@ def login_page():
                 
                 # if successful, then redirect to homepage
                 response = redirect("/")
-                response.set_cookie('loggedInUser', userCredentialsQueryResult[0])
+                response.set_cookie('loggedInUser', str(userCredentialsQueryResult[0]))
                 return response
 
         return redirect(url_for('login'))
