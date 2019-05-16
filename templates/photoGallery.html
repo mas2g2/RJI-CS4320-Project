@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Photofilter">
+	<meta name="keywords" content="Photofilter, upload, photo, photos, rating, rate, download, gallery, sort, display, img, images, best">
+	<meta name="author" content="Christopher Foeller, Milesh Shah and Joshua Thompson">
+    <meta name="copyright" content="(c) Copyright 2019 - CS 4320 - Group 15">
+    
+	<title>Sort Images</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css"> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+
+	<link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../static/img/favicon.ico" type="image/x-icon">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<link href="../static/styles/bootstrap.min.css" rel="stylesheet"><strong></strong>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/stylesheet.css" /></head>
+    
+    <script src="../static/scripts/myScript.js"></script>
+    
+    <script>
+    var filesForDownload = [];
+    {% for photo in userPhotos %}
+        {% if photo['Rating'] is defined %}
+            {% if photo['Rating'] > imgr %}
+                filesForDownload.push( { path: "{{'../' + photo['relativePath']}}", name: "{{photo['Rating']}}.jpg" } );
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+    </script>
+    
+<body onload="restoreimgr()">
+    
+    
+<!--------------------------------------------------------NAVBAR------------------------------------------------------------>
+<!-- USE CASE 3: images will have a link button that will have the attribute 'download' that will download a given picture upon mousedown -->
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+    
+    	<!-- Brand and toggle get grouped for better mobile display -->
+    	<div class="navbar-header">
+    		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        		<span class="sr-only">Toggle navigation</span>
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+      		</button>
+      		<a class="navbar-brand nopadding" href="/"><img src="../static/img/logo.png" alt="Northern Cafe and Bakery" class="img-responsive"></a>
+   		</div>
+
+    	<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+        		<li><a href="/"><p class="moonflower"><i class="fa fa-home"></i> Home</p></a></li>
+        		<li><a href="/"><p class="moonflower"><i class="fa fa-camera-retro"></i> Upload</p></a></li>
+        		<li><a href="/photoGallery/"><p class="moonflower"><i class="fa fa-image"></i> View Images</p></a></li>
+			</ul><!-- Navbar-Left -->
+			<ul class="nav navbar-nav navbar-right">
+                <li class="moonflower"><a href="/logout/"><i class="fa fa fa-user"></i>&nbsp;Sign Out</a></li>
+            </ul>
+    	</div><!-- /.navbar-collapse -->
+    
+  	</div><!-- /.container-fluid -->
+</nav>
+<!------------------------------------------------------End Navbar---------------------------------------------------------->
+<div class="container-fluid redbg">
+    <div class="row-fluid">
+
+        <div class="col-md-1"></div>
+
+        <div class="col-md-10">
+            <br>
+            <h2 class="center">Search Settings</h2>
+            <br>
+            <p class="center moonflower">What Kind of Images Are You Wanting?</p>
+            <div class="center">
+                <div class="btn-group centerdiv" data-toggle="buttons">
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="imgclass" id="imgc1" autocomplete="off" checked> Football
+                  </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="imgclass" id="imgc2" autocomplete="off"> Football
+                  </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="imgclass" id="imgc3" autocomplete="off"> Football
+                  </label>
+                    <label class="btn btn-primary">
+                    <input type="radio" name="imgclass" id="imgc4" autocomplete="off"> Football
+                  </label>
+                  <label class="btn btn-primary">
+                    <input type="radio" name="imgclass" id="imgc5" autocomplete="off"> Other
+                  </label>
+                </div>
+            </div>
+            <br>
+            <p class="center moonflower">What Orientation of Images Are You Wanting?</p>
+            <div class="center">
+                <div class="btn-group centerdiv" data-toggle="buttons">
+                  <label class="btn btn-primary">
+                    <input type="radio" name="imgorientation" id="imgo1" autocomplete="off"> Portrait
+                  </label>
+                  <label class="btn btn-primary active">
+                    <input type="radio" name="imgorientation" id="imgo2" autocomplete="off" checked> Landscape
+                  </label>
+                </div>
+            </div>
+            
+              
+
+            <br>
+            <p class="center moonflower">What is the Minimum Rating Wanted? (0-10)</p>
+            <div class="center">
+                <div class="centerdiv">
+                <form action="/getRating/" method="POST">
+                    <div class="sliderbg">
+                      <div class="floatpls lowerslider">
+                        0&nbsp;
+                      </div>
+                      <div class="floatpls lowerslider">
+                        <input type="range" id="slider" name="imgrating" min="0" max="10" value="0" step="0.01" onchange="updateTextInput(this.value);">
+                      </div>
+                      <div class="floatpls lowerslider">
+                        &nbsp;10&nbsp;
+                      </div>
+                      <div class="floatpls seperateslider">
+                        &nbsp;<input class="forcesize" type="number" id="textInput" value="0" min="0" max="10" step="0.01" maxlength="4" size="1" onchange="updateSliderInput(this.value)">
+                      </div>
+                    </div>
+                   <br>
+                    <!--<input type="text" name="imgclassvalue" id="imgcv" class="inputhidden">
+                    <input type="text" name="imgorientationvalue" id="imgov" class="inputhidden">-->
+                    <input type="submit" value="Submit">
+                </form>
+                </div>
+            </div>
+            
+            <div class="center softdivider">
+                <button id="downloadallbtn" class="center" onclick="downloadallfunction()">Download All</button>
+            </div>
+            <br>
+            <br>
+          </div>
+
+        <div class="col-md-1"></div>
+    </div>
+</div>
+    
+
+<!----- Template for dymanmic implementation ------
+    <div class="row showcaserow wow fadeIn">
+
+    -------Portrait Imgs-------- [6 imgs per row]
+        <div class="col-md-2">
+            <a href="[IMG LINK]" target="_blank"><p class="center"><img style="border:3px solid black" src="[IMG LINK]" alt="[IMG ALT TEXT]" class="img-responsive centerimg"></p></a>
+            <p class="center"><button type="button" class="btn btn-primary btn" data-toggle="modal" data-target="#img[NUMBER]">
+              More Information
+            </button></p>
+
+
+            <div class="modal fade" id="img[NUMBER]" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title center pmodal" id="myModalLabel">Image Submited by [USERNAME]</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p class="pmodal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet arcu auctor hendrerit. Vestibulum ornare eget libero eget lacinia. Suspendisse potenti. Suspendisse aliquam libero non lectus accumsan, et luctus quam pretium. Etiam suscipit erat eget erat mattis.</p>
+                      <p class="pmodal">Category: [CATEGORY]</p>
+                      <p class="pmodal">Rating: [RATING]</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+    -------Landscape Imgs-------- [4 imgs per row]
+        <div class="col-md-3">
+            <a href="[IMG LINK]"><p class="center"><img src="[IMG LINK]" alt="Preview of Riders Patches" class="img-responsive centerimg previewborder"></p></a><br>
+            <p class="center"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#img[NUMBER]">
+              More Information
+            </button></p>
+
+            <div class="modal fade" id="img[NUMBER]" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title center pmodal" id="myModalLabel">Image Submited by [USERNAME]</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p class="pmodal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet arcu auctor hendrerit. Vestibulum ornare eget libero eget lacinia. Suspendisse potenti. Suspendisse aliquam libero non lectus accumsan, et luctus quam pretium. Etiam suscipit erat eget erat mattis.</p>
+                      <p class="pmodal">Category: [CATEGORY]</p>
+                      <p class="pmodal">Rating: [RATING]</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    -----------------------------
+    </div>
+    
+    
+
+-------------------------------------------------->
+<div class="container-fluid prevwebpage" id="graphicstage">   
+    
+{% if userPhotos %}
+    {% for photo_row in userPhotos | sort(attribute='Rating', reverse=True) | batch(4, '&nbsp;') %}
+    {% set count = loop %}
+    {% if photo_row[0]['Rating'] > imgr %}
+    <div class="row showcaserow  wow fadeIn">
+    {% endif %}
+        {% for photo in photo_row %}
+        {% if photo['Rating'] is defined %}
+        {% if photo['Rating'] > imgr %}
+        <div class="col-md-3">
+            <a class="download" href="{{'../' + photo['relativePath']}}" download="{{'../' + photo['relativePath']}}"><p class="center"><img src="{{'../' + photo['relativePath']}}" alt="Image: {{ '../' + photo['relativePath']}}" class="img-responsive centerimg previewborder"></p></a><br>
+            <p class="center"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#img{{count.index0}}{{loop.index0}}">
+              More Information
+            </button></p>
+
+            <div class="modal fade" id="img{{count.index0}}{{loop.index0}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title center pmodal" id="myModalLabel">Image Submited by [USERNAME]</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p class="pmodal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet arcu auctor hendrerit. Vestibulum ornare eget libero eget lacinia. Suspendisse potenti. Suspendisse aliquam libero non lectus accumsan, et luctus quam pretium. Etiam suscipit erat eget erat mattis.</p>
+                      <p class="pmodal">Category: [CATEGORY]</p>
+                      <p class="pmodal">Rating: {{ photo['Rating'] }}</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        {% endif %}
+        {% endif %}
+        {% endfor %}
+    {% if photo_row[0]['Rating'] > imgr %}
+    </div>
+    {% endif %}
+    {% endfor %}
+{% endif %}  
+
+
+</div><!--End Content-->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+ <!------------------------------------------------------------Footer------------------------------------------------------->
+ 	<div class="container-fluid footerbg">
+    	<div class="row-fluid">
+            
+            <div class="col-md-1"> </div>
+            
+            <div class="col-md-10 footer">
+                <p class="center footerheader"><a href="{{ url_for('aboutthissite') }}">About this site</a></p>
+                <p>Copyright &copy; 2019 - CS 4320 Group 15 | All Rights Reserved. This page was created by Christopher Foeller, Milesh Shah and Joshua Thompson. No portion of this page may be copied without the permission of the <a href="mailto:cjfoeller0404@gmail.com">webmaster</a>. If you require assistance navigating or accessing this website, please contact Christopher Foeller at <a href="mailto:cjfoeller0404@gmail.com">cjfoeller0404@gmail.com</a>. If you have any farther concerns or just any questions in general, please contact Christopher Foeller at <a href="mailto:cjfoeller0404@gmail.com">cjfoeller0404@gmail.com</a></p>
+                <br>
+                <p class="center">Page Last Updated on 
+                    <!-- #BeginDate format:Am1 -->May 5, 2019<!-- #EndDate -->
+                </p>   
+            </div>
+            
+            <div class="col-md-1"> </div>
+            
+       	</div>
+	</div>
+<!----------------------------------------------------------End Footer----------------------------------------------------->
+
+
+
+
+
+
+<script>
+  wow = new WOW(
+    {
+        boxClass:     'wow',      // default
+        animateClass: 'animated', // change this if you are not using animate.css
+        offset:       0,          // default
+        mobile:       true,       // keep it on mobile
+        live:         true        // track if element updates
+      }
+    )
+   wow.init();
+    
+    function updateTextInput(val) {
+            document.getElementById('textInput').value=val; 
+        }
+    function updateSliderInput(val) {
+            if (val.length > 4){ 
+                val = val.slice(0, 4);
+                document.getElementById('textInput').value=val; 
+            }
+            if(val > 10){
+                val = 10;
+                document.getElementById('textInput').value=val; 
+            }
+            if(val < 0){
+                val = 0;
+                document.getElementById('textInput').value=val; 
+            }
+          document.getElementById('slider').value=val; 
+    }
+    function restoreimgr() {
+        updateTextInput({{imgr}});
+        updateSliderInput({{imgr}});
+    }
+    
+    function downloadallfunction(){
+        var temporaryDownloadLink = document.createElement("a");
+        temporaryDownloadLink.style.display = 'none';
+
+        document.body.appendChild( temporaryDownloadLink );
+        
+        for( var n = 0; n < filesForDownload.length; n++ )
+        {
+            var download = filesForDownload[n];
+            temporaryDownloadLink.setAttribute( 'href', download.path );
+            temporaryDownloadLink.setAttribute( 'download', download.name );
+
+            temporaryDownloadLink.click();
+        }
+
+        document.body.removeChild( temporaryDownloadLink );
+    }
+</script>
+
+</body>
+</html>

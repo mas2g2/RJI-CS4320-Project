@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Photofilter">
+	<meta name="keywords" content="Photofilter, upload, photo, photos, rating, rate, download, gallery, sort, display, img, images, best">
+	<meta name="author" content="Christopher Foeller, Milesh Shah and Joshua Thompson">
+    <meta name="copyright" content="(c) Copyright 2019 - CS 4320 - Group 15">
+
+	<title>About This Site</title>
+
+	<link rel="shortcut icon" href="../static/img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="../static/img/favicon.ico" type="image/x-icon">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<link href="../static/styles/bootstrap.min.css" rel="stylesheet"><strong></strong>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../static/styles/stylesheet.css" />
+</head>
+
+
+<body class="loyalbg">
+
+<!--------------------------------------------------------NAVBAR------------------------------------------------------------>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+    
+    	<!-- Brand and toggle get grouped for better mobile display -->
+    	<div class="navbar-header">
+    		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        		<span class="sr-only">Toggle navigation</span>
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+      		</button>
+      		<a class="navbar-brand nopadding" href="/"><img src="../static/img/logo.png" alt="Northern Cafe and Bakery" class="img-responsive"></a>
+   		</div>
+
+    	<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+        		<li><a href="/"><p class="moonflower"><i class="fa fa-home"></i> Home</p></a></li>
+        		<li><a href="/#upload"><p class="moonflower"><i class="fa fa-camera-retro"></i> Upload</p></a></li>
+        		<li><a href="/photoGallery/"><p class="moonflower"><i class="fa fa-image"></i> View Images</p></a></li>
+			</ul><!-- Navbar-Left -->
+			<ul class="nav navbar-nav navbar-right">
+                <li class="moonflower"><a href="/logout/"><i class="fa fa fa-user"></i>&nbsp;Sign Out</a></li>
+            </ul>
+    	</div><!-- /.navbar-collapse -->
+    
+  	</div><!-- /.container-fluid -->
+</nav>
+<!------------------------------------------------------End Navbar--------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+<!---------------------------------------------------About This Site------------------------------------------------------->
+<div class="container aboutthissite">
+	
+    <h1>Photofiltre - About This Site</h1>
+	<hr>
+    
+   		<h3>Website created by Christopher Foeller, Milesh Shah and Joshua Thompson</h3>
+        
+    		<p>All are students at Univerity of Missouri in Columbia, MO.</p>
+    		<p>CS4320 - Group 15</p>
+    		<hr>
+        
+        <h3>Programs and Preferences</h3>
+        
+        	<p>This site was created using Adobe Dreamweaver CS6, Adobe Brackets, Adobe Photoshop CS6, Brackets, Pixlr Editor, and more to be added later!</p>
+            <p>This site utilizes the Bootstrap 3.3.6 framework</p>
+            <p>This site is designed to be mobile-friendly and responsive</p>
+            <p>Best viewed at 1366 x 768 resolution in Google Chrome</p>
+   			<hr>
+    
+    	<h3>Copyright and Image Rights</h3>
+        
+        	<p>Homepage graphics are original works of Christopher Foeller, Milesh Shah and Joshua Thompson</p>
+            <p>All navbar icons and hero image icons are works of Font Awesome in accordance with the <a href="https://fontawesome.com/license">Font Awesome License</a></p>
+    		<p>All remaining images are from RJI who gave permission to use their pictures. Works are copyrighted and creators retain all rights to their work.</p>
+        	<hr>
+    	
+        <h3>Fair Use Disclaimer</h3>
+        
+        	<p class="fair">All content placed in this presentation is the work of the initial distributors or owners. All content in this presentation is used under the fair use doctrine and is for educational use only.</p>
+			<p>&nbsp;</p>
+
+</div>
+<!-----------------------------------------------------End About This Site------------------------------------------------->
+
+
+
+
+
+
+
+
+<!------------------------------------------------------------Footer------------------------------------------------------->
+ 	<div class="container-fluid footerbg">
+    	<div class="row-fluid">
+            
+            <div class="col-md-1"> </div>
+            
+            <div class="col-md-10 footer">
+                <p class="center footerheader"><a href="{{ url_for('aboutthissite') }}">About this site</a></p>
+                <p>Copyright &copy; 2019 - CS 4320 Group 15 | All Rights Reserved. This page was created by Christopher Foeller, Milesh Shah and Joshua Thompson. No portion of this page may be copied without the permission of the <a href="mailto:cjfoeller0404@gmail.com">webmaster</a>. If you require assistance navigating or accessing this website, please contact Christopher Foeller at <a href="mailto:cjfoeller0404@gmail.com">cjfoeller0404@gmail.com</a>. If you have any farther concerns or just any questions in general, please contact Christopher Foeller at <a href="mailto:cjfoeller0404@gmail.com">cjfoeller0404@gmail.com</a></p>
+                <br>
+                <p class="center">Page Last Updated on 
+                    <!-- #BeginDate format:Am1 -->May 4, 2019<!-- #EndDate -->
+                </p>   
+            </div>
+            
+            <div class="col-md-1"> </div>
+            
+       	</div>
+	</div>
+<!----------------------------------------------------------End Footer----------------------------------------------------->
+
+
+</body>
+</html>
