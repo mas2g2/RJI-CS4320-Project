@@ -1,142 +1,247 @@
-<!DOCTYPE  html>
+<!doctype html>
 <html lang="en">
-
-    <head>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Photofilter">
+	<meta name="keywords" content="Photofilter, upload, photo, photos, rating, rate, download, gallery, sort, display, img, images, best">
+	<meta name="author" content="Christopher Foeller, Milesh Shah and Joshua Thompson">
+    <meta name="copyright" content="(c) Copyright 2019 - CS 4320 - Group 15">
     
-        <title>Home</title>
-        <meta charset="utf-8">
-        <link rel="stylesheet" type="text/css" href="static/styles/myStyle.css">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet"> 
-        
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        
-        <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:700i" rel="stylesheet"> 
-        <script src="static/scripts/myScript.js"></script>
-    </head>
-
+	<title>Photofilter</title>
     
-    <body id="homeBody">
-        <nav>
-            <div class="navbar">
-                <div class="logoCircle">
-                    <img src="https://pbs.twimg.com/profile_images/539538123588243458/pu8EgQuz.png" alt="rji logo">
-                </div>
+    <!--<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:700i" rel="stylesheet">--> 
+    
 
-                <a href="loginHandler.php"><h2 id="header">Photo Classifier</h2></a>
-                <button class="fas fa-bars slide-toggle"></button>
-            </div>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.4.0/animate.min.css"> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
 
-            <hr>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
-            <div class="sidebar">
-                <div class="sidebar-content">
-                    <i class="fas fa-times exit-sidebar"></i>
-                    <a href="/"><h3>Home</h3></a>
-                    <hr>
-                    <a href="aboutUs.php"><h3>About Us</h3></a>
-                    <hr>
-                    <a href="/photoGallery/"><h3>Photo Gallery</h3></a>
-                    <hr>
-                    <a href="/logout/"><h3>Logout</h3></a>
-                </div>
-            </div>
-
-            <div class="sidebarOverlay"></div>
-        </nav>
+	<link href="../static/styles/bootstrap.min.css" rel="stylesheet">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../static/styles/stylesheet.css" />
+    
         
-        <div id="pageContent">
-            {% if error %}
-                <div class="alert alert-warning" role="alert">
-                  {{ error }}
-                </div>
-            {% endif %}
-            <div class="carousel-container">
-                <div id="slide1" class="slide crop-slide active">
-                    <img src="https://www.poy.org/76/images/76-15-thomm-11.jpg" alt="main Picture">
-                    <a href="#">
-                        <button class="slideLink homePageRating">7/10</button>
-                    </a>
-                    <div class="slideOverlay"></div>
-                </div>
-                <div id="slide2" class="slide crop-slide">
-                    <img src="https://www.poy.org/76/images/76-16-TatoL-01.jpg" alt="main Picture">
-                    <a href="#">
-                        <button class="slideLink homePageRating">8/10</button>
-                    </a>
-                    <div class="slideOverlay"></div>
-                </div>
-                <div id="slide3" class="slide crop-slide">
-                    <img src="https://www.poy.org/76/images/76-01-Kreun-01.jpg" alt="main Picture">
-                    <a href="#">
-                        <button class="slideLink homePageRating">10/10</button>
-                    </a>
-                    <div class="slideOverlay"></div>
-                </div>
+    <script src="../static/scripts/myScript.js"></script>
+</head>
 
-                <div class="background-image">
-                    <img src="https://images.unsplash.com/photo-1485288734756-0b31a0a31d95?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=2b2f369f46f24cbcc6c9bf8dde83b59c&w=1000&q=80" alt="background image">
-                </div>
 
-                <span class="nextSlide" onclick="nextSlide()">
-                    <i class="fas fa-chevron-right"></i>
-                </span>
+<body>
 
-                <span class="previousSlide" onclick="previousSlide()">
-                    <i class="fas fa-chevron-left"></i>
-                </span>
+<!--------------------------------------------------------NAVBAR------------------------------------------------------------>
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container-fluid">
+    
+    	<!-- Brand and toggle get grouped for better mobile display -->
+    	<div class="navbar-header">
+    		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        		<span class="sr-only">Toggle navigation</span>
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+        		<span class="icon-bar"></span>
+      		</button>
+      		<a class="navbar-brand nopadding" href="/"><img src="../static/img/logo.png" alt="Northern Cafe and Bakery" class="img-responsive"></a>
+   		</div>
+
+    	<div class="collapse navbar-collapse " id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav">
+        		<li><a href="/"><p class="moonflower"><i class="fa fa-home"></i> Home</p></a></li>
+        		<li><a href="#upload"><p class="moonflower"><i class="fa fa-camera-retro"></i> Upload</p></a></li>
+        		<li><a href="/photoGallery/"><p class="moonflower"><i class="fa fa-image"></i> View Images</p></a></li>
+			</ul><!-- Navbar-Left -->
+			<ul class="nav navbar-nav navbar-right">
+                <li class="moonflower"><a href="/logout/"><i class="fa fa fa-user"></i>&nbsp;Sign Out</a></li>
+            </ul>
+    	</div><!-- /.navbar-collapse -->
+    
+  	</div><!-- /.container-fluid -->
+</nav>
+<!------------------------------------------------------End Navbar---------------------------------------------------------->
+
+
+
+
+
+<!-----------------------------------------------------Hero Carousel-------------------------------------------------------->
+<div id="herocarousel" class="carousel slide" data-ride="carousel">
+  	
+    <!-- Indicators -->
+  	<ol class="carousel-indicators">
+    	<li data-target="#herocarousel" data-slide-to="0" class="active"></li>
+    	<li data-target="#herocarousel" data-slide-to="1"></li>
+    	<li data-target="#herocarousel" data-slide-to="2"></li>
+    	<li data-target="#herocarousel" data-slide-to="3"></li>
+  	</ol>
+
+  	<!-- Wrapper for slides -->
+  	<div class="carousel-inner" role="listbox">
+        
+    	<div class="item active">
+      		<img src="../static/img/welcomeheroimg.jpg" alt="Welcome to Photo Filter">
+      		<div class="carousel-caption"></div>
+    	</div>
+            
+    	<div class="item">
+       		<a href="menu.html"><img src="../static/img/uploadheroimgsm.jpg" class="img-responsive" alt="Whatever this img says!"></a>
+      		<div class="carousel-caption"></div>
+    	</div>
+            
+     	<!--<div class="item">
+      		<a href="reservation.html"><img src="img/testredheroimg.jpg" class="img-responsive" alt="What are you waiting for? Make a reservation today!"></a>
+      		<div class="carousel-caption"></div>
+    	</div>-->
+            
+    	<div class="item">
+      		<img src="../static/img/galleryheroimgsm.jpg" class="img-responsive" alt="This Img says something!">
+      		<div class="carousel-caption"></div>
+    	</div>
+        <!--<div class="item">
+      		<img src="img/herodisplay1" class="img-responsive" alt="Hero Img 1">
+      		<div class="carousel-caption"></div>
+    	</div>
+        <div class="item">
+      		<img src="img/herodisplay2" class="img-responsive" alt="Hero Img 1">
+      		<div class="carousel-caption"></div>
+    	</div>
+        <div class="item">
+      		<img src="img/herodisplay3" class="img-responsive" alt="Hero Img 1">
+      		<div class="carousel-caption"></div>
+    	</div>-->
+        <div class="item">
+      		<img src="../static/img/herodisplay4l.jpg" class="img-responsive" alt="Hero Img 1">
+      		<div class="carousel-caption"></div>
+    	</div>
+            
+  	</div><!-- End Wrapper-->
+
+  	<!-- Controls -->
+  	<a class="left carousel-control" href="#herocarousel" role="button" data-slide="prev">
+    	<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    	<span class="sr-only">Previous</span>
+  	</a>
+  	<a class="right carousel-control" href="#herocarousel" role="button" data-slide="next">
+    	<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    	<span class="sr-only">Next</span>
+  	</a>
+    
+</div>
+<!-----------------------------------------------------End Hero Carousel---------------------------------------------------->
+
+
+
+
+
+
+
+
+<!-------------------------------------------------------Body Imgs---------------------------------------------------------->
+<!--<div class="wow fadeIn">
+    <a href="login.html"><img class="img-responsive" src="../static/img/userheroimgsm.jpg" alt="Become a part of our Customer Loyalty Program."></a>
+</div>-->
+<a name="upload"></a>
+<div id="features-container">
+    <div id="buttonGroup">
+        <!-- Button trigger modal -->
+        <button id="uploadBtn" type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+            <div class="pushdownbtn">
+                <p class="moonflower">Upload Photos</p>
             </div>
-            
-            <div class="banner"></div>
-            
-            <div id="features-container">
-                <div id="buttonGroup">
-                    <!-- Button trigger modal -->
-                    <button id="uploadBtn" type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
-                        Upload Photos
+        </button>
+    </div>
+    <br>
+    <hr id="featureHR">
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form action="/rating/" method="post" enctype="multipart/form-data">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Upload Photos</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <br>
-                <hr id="featureHR">
-            </div>
-        </div>
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <form action="/rating/" method="post" enctype="multipart/form-data">
-
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Upload Photos</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <div id="checkboxWrapper" class="modal-body">
-                            <div id="checkboxContainer">
-                                <span class="checkboxLabel">Select Directory</span>
-                                <label class="switch">
-                                    <input id="myCheckbox1" type="checkbox">
-                                    <span class="slider"></span>
-                                </label>
-                                <span class="checkboxLabel">Select Files</span>
-                            </div>
-                            <input id="imagesUpload" type="file" name="file[]"  multiple accept="image/*"/>
-                            <input id="directoryUpload" type="file" name="directory[]" webkitdirectory mozdirectory accept="image/*" />
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                            <input type="submit" class="btn btn-success" value="Rate Photos"/>
-                        </div>
-
-                    </form>
+                <div id="checkboxWrapper" class="modal-body">
+                    <div id="checkboxContainer">
+                        <span class="checkboxLabel">Select Directory</span>
+                        <label class="switch">
+                            <input id="myCheckbox1" type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+                        <span class="checkboxLabel">Select Files</span>
+                    </div>
+                    <input id="imagesUpload" type="file" name="file[]"  multiple accept="image/*"/>
+                    <input id="directoryUpload" type="file" name="directory[]" webkitdirectory mozdirectory accept="image/*" />
                 </div>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <input type="submit" class="btn btn-success" value="Rate Photos"/>
+                </div>
+
+            </form>
         </div>
-    </body>
+    </div>
+</div>
+<!-----------------------------------------------------End Body Imgs-------------------------------------------------------->
+
+
+
+
+
+
+
+
+<!------------------------------------------------------------Footer------------------------------------------------------->
+ 	<div class="container-fluid footerbg">
+    	<div class="row-fluid">
+            
+            <div class="col-md-1"> </div>
+            
+            <div class="col-md-10 footer">
+                <p class="center footerheader"><a href="{{ url_for('aboutthissite') }}">About this site</a></p>
+                <p>Copyright &copy; 2019 - CS 4320 Group 15 | All Rights Reserved. This page was created by Christopher Foeller, Milesh Shah and Joshua Thompson. No portion of this page may be copied without the permission of the <a href="mailto:cjfoeller0404@gmail.com">webmaster</a>. If you require assistance navigating or accessing this website, please contact Christopher Foeller at <a href="mailto:cjfoeller0404@gmail.com">cjfoeller0404@gmail.com</a>. If you have any farther concerns or just any questions in general, please contact Christopher Foeller at <a href="mailto:cjfoeller0404@gmail.com">cjfoeller0404@gmail.com</a></p>
+                <br>
+                <p class="center">Page Last Updated on 
+                    <!-- #BeginDate format:Am1 -->May 2, 2019<!-- #EndDate -->
+                </p>   
+            </div>
+            
+            <div class="col-md-1"> </div>
+            
+       	</div>
+	</div>
+<!----------------------------------------------------------End Footer----------------------------------------------------->
+
+
+
+
+
+
+<script>
+  wow = new WOW(
+    {
+        boxClass:     'wow',      // default
+        animateClass: 'animated', // change this if you are not using animate.css
+        offset:       0,          // default
+        mobile:       true,       // keep it on mobile
+        live:         true        // track if element updates
+      }
+    )
+   wow.init();
+</script>
+
+</body>
 </html>
